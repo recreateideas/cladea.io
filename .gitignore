@@ -1,0 +1,56 @@
+# Logs and databases #
+######################
+**/*.log
+*.sqlite
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Build Systems #
+#################
+node_modules
+**/node_modules/
+.sass-cache
+**/build/output
+
+# Compiled Output #
+###################
+**/dist/*
+**/coverage/*
+**/.nyc_output/*
+**/compiled_tests/*
+
+# IDE generated files #
+#######################
+.idea/*
+*.iml
+api-spec/merchant-api-spec/_build/*
+
+## CDK #
+###################
+cdk.out/**
+node_modules
+
+.aws-sam
+template.yaml
+## Generated spec document
+gen_spec
+__tsoa.json
+
+
+build/src
+build/lambda-tests
+
+# beem-gen-json-schemas
+compiled-schemas
+
+cdk.out
+
+.env

@@ -1,0 +1,82 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Container - styledComponents <Container/> should render error styles 1`] = `
+.c0 {
+  color: #F50933;
+  background-color: rgba(252,115,81,0.1);
+  white-space: pre;
+  padding: 8px;
+  border-radius: 4px;
+  overflow-x: auto;
+}
+
+.c0 .section {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c0 .section .icon {
+  margin-right: 8px;
+}
+
+<div
+  class="c0"
+  type="error"
+/>
+`;
+
+exports[`Container - styledComponents <Container/> should render success styles 1`] = `
+.c0 {
+  color: #0FC9A5;
+  background-color: rgba(15,201,165,0.1);
+  white-space: pre;
+  padding: 8px;
+  border-radius: 4px;
+  overflow-x: auto;
+}
+
+.c0 .section {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c0 .section .icon {
+  margin-right: 8px;
+}
+
+<div
+  class="c0"
+  type="success"
+/>
+`;
+
+exports[`Container - styledComponents <Container/> should render warn styles 1`] = `
+.c0 {
+  color: #FC7351;
+  background-color: rgba(254,217,68,0.1);
+  white-space: pre;
+  padding: 8px;
+  border-radius: 4px;
+  overflow-x: auto;
+}
+
+.c0 .section {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c0 .section .icon {
+  margin-right: 8px;
+}
+
+<div
+  class="c0"
+  type="warn"
+/>
+`;

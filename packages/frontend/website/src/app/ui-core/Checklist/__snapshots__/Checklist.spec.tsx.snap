@@ -1,0 +1,80 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Checklist/> should render 1`] = `
+<styled.div>
+  <ForwardRef(List)
+    sx={
+      Object {
+        "bgcolor": "background.paper",
+        "maxWidth": 360,
+        "width": "100%",
+      }
+    }
+  >
+    <ForwardRef(ListItem)
+      disablePadding={true}
+      key="0"
+    >
+      <ForwardRef(ListItemButton)
+        dense={true}
+        onClick={[Function]}
+      >
+        <ForwardRef(ListItemIcon)>
+          <Checkbox
+            checked={false}
+            disableRipple={true}
+            edge="start"
+            inputProps={
+              Object {
+                "aria-labelledby": "checkbox-list-label-1",
+              }
+            }
+          />
+        </ForwardRef(ListItemIcon)>
+        <ForwardRef(ListItemText)
+          id="checkbox-list-label-1"
+          primary={
+            <div
+              className="some-test-item"
+            >
+              'some label'
+            </div>
+          }
+        />
+      </ForwardRef(ListItemButton)>
+    </ForwardRef(ListItem)>
+    <ForwardRef(ListItem)
+      disablePadding={true}
+      key="1"
+    >
+      <ForwardRef(ListItemButton)
+        dense={true}
+        onClick={[Function]}
+      >
+        <ForwardRef(ListItemIcon)>
+          <Checkbox
+            checked={false}
+            disableRipple={true}
+            edge="start"
+            inputProps={
+              Object {
+                "aria-labelledby": "checkbox-list-label-2",
+              }
+            }
+          />
+        </ForwardRef(ListItemIcon)>
+        <ForwardRef(ListItemText)
+          id="checkbox-list-label-2"
+          primary={
+            <div
+              className="some-test-item"
+            >
+              'some other label'
+            </div>
+          }
+        />
+      </ForwardRef(ListItemButton)>
+    </ForwardRef(ListItem)>
+  </ForwardRef(List)>
+</styled.div>
+`;

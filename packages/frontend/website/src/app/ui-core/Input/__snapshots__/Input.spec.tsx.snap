@@ -1,0 +1,268 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Input/> should render 1`] = `
+Array [
+  .c1 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  position: relative;
+  min-width: 0;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  vertical-align: top;
+}
+
+.c0 {
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+@media (hover:none) {
+
+}
+
+<div
+    className="c0 input-container"
+  >
+    <div
+      className="c1 MuiFormControl-root MuiTextField-root-gGZDs MuiTextField-root"
+    >
+      Array [
+        "",
+        .c1 {
+  font-family: "Roboto","Helvetica","Arial",sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.4375em;
+  -webkit-letter-spacing: 0.00938em;
+  -moz-letter-spacing: 0.00938em;
+  -ms-letter-spacing: 0.00938em;
+  letter-spacing: 0.00938em;
+  color: #031A51;
+  box-sizing: border-box;
+  position: relative;
+  cursor: text;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c1.Mui-disabled {
+  color: rgba(0,0,0,0.38);
+  cursor: default;
+}
+
+.c4 {
+  font: inherit;
+  -webkit-letter-spacing: inherit;
+  -moz-letter-spacing: inherit;
+  -ms-letter-spacing: inherit;
+  letter-spacing: inherit;
+  color: currentColor;
+  padding: 4px 0 5px;
+  border: 0;
+  box-sizing: content-box;
+  background: none;
+  height: 1.4375em;
+  margin: 0;
+  -webkit-tap-highlight-color: transparent;
+  display: block;
+  min-width: 0;
+  width: 100%;
+  -webkit-animation-name: mui-auto-fill-cancel;
+  animation-name: mui-auto-fill-cancel;
+  -webkit-animation-duration: 10ms;
+  animation-duration: 10ms;
+}
+
+.c4::-webkit-input-placeholder {
+  color: currentColor;
+  opacity: 0.42;
+  -webkit-transition: opacity 200ms cubic-bezier(0.4,0,0.2,1) 0ms;
+  transition: opacity 200ms cubic-bezier(0.4,0,0.2,1) 0ms;
+}
+
+.c4::-moz-placeholder {
+  color: currentColor;
+  opacity: 0.42;
+  -webkit-transition: opacity 200ms cubic-bezier(0.4,0,0.2,1) 0ms;
+  transition: opacity 200ms cubic-bezier(0.4,0,0.2,1) 0ms;
+}
+
+.c4:-ms-input-placeholder {
+  color: currentColor;
+  opacity: 0.42;
+  -webkit-transition: opacity 200ms cubic-bezier(0.4,0,0.2,1) 0ms;
+  transition: opacity 200ms cubic-bezier(0.4,0,0.2,1) 0ms;
+}
+
+.c4::-ms-input-placeholder {
+  color: currentColor;
+  opacity: 0.42;
+  -webkit-transition: opacity 200ms cubic-bezier(0.4,0,0.2,1) 0ms;
+  transition: opacity 200ms cubic-bezier(0.4,0,0.2,1) 0ms;
+}
+
+.c4:focus {
+  outline: 0;
+}
+
+.c4:invalid {
+  box-shadow: none;
+}
+
+.c4::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+label[data-shrink=false] + .MuiInputBase-formControl .c3::-webkit-input-placeholder {
+  opacity: 0 !important;
+}
+
+label[data-shrink=false] + .MuiInputBase-formControl .c3::-moz-placeholder {
+  opacity: 0 !important;
+}
+
+label[data-shrink=false] + .MuiInputBase-formControl .c3:-ms-input-placeholder {
+  opacity: 0 !important;
+}
+
+label[data-shrink=false] + .MuiInputBase-formControl .c3::-ms-input-placeholder {
+  opacity: 0 !important;
+}
+
+label[data-shrink=false] + .MuiInputBase-formControl .c3:focus::-webkit-input-placeholder {
+  opacity: 0.42;
+}
+
+label[data-shrink=false] + .MuiInputBase-formControl .c3:focus::-moz-placeholder {
+  opacity: 0.42;
+}
+
+label[data-shrink=false] + .MuiInputBase-formControl .c3:focus:-ms-input-placeholder {
+  opacity: 0.42;
+}
+
+label[data-shrink=false] + .MuiInputBase-formControl .c3:focus::-ms-input-placeholder {
+  opacity: 0.42;
+}
+
+.c4.Mui-disabled {
+  opacity: 1;
+  -webkit-text-fill-color: rgba(0,0,0,0.38);
+}
+
+.c4:-webkit-autofill {
+  -webkit-animation-duration: 5000s;
+  animation-duration: 5000s;
+  -webkit-animation-name: mui-auto-fill;
+  animation-name: mui-auto-fill;
+}
+
+.c2 {
+  position: relative;
+}
+
+label + .c0 {
+  margin-top: 16px;
+}
+
+.c2:after {
+  border-bottom: 2px solid #12D8F7;
+  left: 0;
+  bottom: 0;
+  content: "";
+  position: absolute;
+  right: 0;
+  -webkit-transform: scaleX(0);
+  -ms-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transition: -webkit-transform 200ms cubic-bezier(0.0,0,0.2,1) 0ms;
+  -webkit-transition: transform 200ms cubic-bezier(0.0,0,0.2,1) 0ms;
+  transition: transform 200ms cubic-bezier(0.0,0,0.2,1) 0ms;
+  pointer-events: none;
+}
+
+.c2.Mui-focused:after {
+  -webkit-transform: scaleX(1);
+  -ms-transform: scaleX(1);
+  transform: scaleX(1);
+}
+
+.c2.Mui-error:after {
+  border-bottom-color: #d32f2f;
+  -webkit-transform: scaleX(1);
+  -ms-transform: scaleX(1);
+  transform: scaleX(1);
+}
+
+.c2:before {
+  border-bottom: 1px solid rgba(0,0,0,0.42);
+  left: 0;
+  bottom: 0;
+  content: "\\00a0";
+  position: absolute;
+  right: 0;
+  -webkit-transition: border-bottom-color 200ms cubic-bezier(0.4,0,0.2,1) 0ms;
+  transition: border-bottom-color 200ms cubic-bezier(0.4,0,0.2,1) 0ms;
+  pointer-events: none;
+}
+
+.c2:hover:not(.Mui-disabled):before {
+  border-bottom: 2px solid #031A51;
+}
+
+.c2.Mui-disabled:before {
+  border-bottom-style: dotted;
+}
+
+@media (hover:none) {
+  .c2:hover:not(.Mui-disabled):before {
+    border-bottom: 1px solid rgba(0,0,0,0.42);
+  }
+}
+
+<div
+          className="c0 c1 c2 MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl"
+          onClick={[Function]}
+        >
+          <input
+            aria-invalid={false}
+            autoFocus={false}
+            className="c3 MuiInput-input-tFIHl c4 MuiInput-input MuiInputBase-input"
+            disabled={false}
+            onAnimationStart={[Function]}
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            required={false}
+            type="text"
+          />
+        </div>,
+      ]
+    </div>
+  </div>,
+  "",
+]
+`;

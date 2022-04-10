@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`IconButton - styledComponents <Container/> disabled should render disabled button 1`] = `
+.c0 .MuiButtonBase-root {
+  border-radius: 4px;
+}
+
+.c0,
+.c0 * {
+  cursor: no-drop;
+}
+
+.c0 svg,
+.c0 * svg {
+  fill: #BDC7DE !important;
+}
+
+<div
+  class="c0"
+  disabled=""
+  shape="square"
+/>
+`;
+
+exports[`IconButton - styledComponents <Container/> shape=default should render from left 1`] = `
+<div
+  class=""
+/>
+`;
+
+exports[`IconButton - styledComponents <Container/> shape=square should render from left 1`] = `
+.c0 .MuiButtonBase-root {
+  border-radius: 4px;
+}
+
+<div
+  class="c0"
+  shape="square"
+/>
+`;

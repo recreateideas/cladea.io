@@ -1,0 +1,179 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Sidebar - styledComponents <Container/> should render from left 1`] = `
+.c0 {
+  height: 100%;
+  width: auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  position: absolute;
+  z-index: 50;
+  left: 0px;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+<div
+  class="c0"
+  from="left"
+  type="overlay"
+>
+  ciao
+</div>
+`;
+
+exports[`Sidebar - styledComponents <Container/> should render from left by default 1`] = `
+.c0 {
+  height: 100%;
+  width: auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  position: absolute;
+  z-index: 50;
+  left: 0px;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+<div
+  class="c0"
+  type="overlay"
+>
+  ciao
+</div>
+`;
+
+exports[`Sidebar - styledComponents <Container/> should render from right 1`] = `
+.c0 {
+  height: 100%;
+  width: auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  position: absolute;
+  z-index: 50;
+  right: 0px;
+  -webkit-flex-direction: row-reverse;
+  -ms-flex-direction: row-reverse;
+  flex-direction: row-reverse;
+}
+
+<div
+  class="c0"
+  from="right"
+  type="overlay"
+>
+  ciao
+</div>
+`;
+
+exports[`Sidebar - styledComponents <Content/> isOpen=false should render from left 1`] = `
+.c0 {
+  height: 100%;
+  background-color: #f9fafb;
+  -webkit-transition: width 0.2s ease-in-out;
+  transition: width 0.2s ease-in-out;
+  width: 0px;
+  overflow: hidden;
+}
+
+<div
+  class="c0"
+  from="left"
+  width="200"
+/>
+`;
+
+exports[`Sidebar - styledComponents <Content/> isOpen=false should render from right 1`] = `
+.c0 {
+  height: 100%;
+  background-color: #f9fafb;
+  -webkit-transition: width 0.2s ease-in-out;
+  transition: width 0.2s ease-in-out;
+  width: 0px;
+  overflow: hidden;
+}
+
+<div
+  class="c0"
+  from="right"
+  width="200"
+/>
+`;
+
+exports[`Sidebar - styledComponents <Content/> isOpen=true should render from left 1`] = `
+.c0 {
+  height: 100%;
+  background-color: #f9fafb;
+  -webkit-transition: width 0.2s ease-in-out;
+  transition: width 0.2s ease-in-out;
+  width: 200px;
+  border-right: solid 1px #dedeeb;
+  box-shadow: rgb(23 23 31 / 5%) 0px 8px 20px 0px;
+}
+
+<div
+  class="c0"
+  from="left"
+  width="200"
+/>
+`;
+
+exports[`Sidebar - styledComponents <Content/> isOpen=true should render from left and width 200 by default 1`] = `
+.c0 {
+  height: 100%;
+  background-color: #f9fafb;
+  -webkit-transition: width 0.2s ease-in-out;
+  transition: width 0.2s ease-in-out;
+  width: 200px;
+  border-right: solid 1px #dedeeb;
+  box-shadow: rgb(23 23 31 / 5%) 0px 8px 20px 0px;
+}
+
+<div
+  class="c0"
+/>
+`;
+
+exports[`Sidebar - styledComponents <Content/> isOpen=true should render from right 1`] = `
+.c0 {
+  height: 100%;
+  background-color: #f9fafb;
+  -webkit-transition: width 0.2s ease-in-out;
+  transition: width 0.2s ease-in-out;
+  width: 200px;
+  border-left: solid 1px #dedeeb;
+  box-shadow: rgb(23 23 31 / 5%) 0px 8px 20px 0px;
+}
+
+<div
+  class="c0"
+  from="right"
+  width="200"
+/>
+`;
+
+exports[`Sidebar - styledComponents <Handle/> should render 1`] = `
+.c0 {
+  position: relative;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  border-radius: 100%;
+  cursor: pointer;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  top: 4px;
+}
+
+<div
+  class="c0"
+/>
+`;

@@ -1,0 +1,130 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Exagon/> should render 1`] = `
+Array [
+  .c0 {
+  position: relative;
+  height: 58.891454965357966px;
+  width: 102px;
+  background-color: #dedeeb;
+  margin: 29.445727482678983px 0;
+}
+
+.c0:before,
+.c0:after {
+  content: '';
+  position: absolute;
+  width: 0;
+  border-left: 51px solid transparent;
+  border-right: 51px solid transparent;
+}
+
+.c0:before {
+  bottom: 100%;
+  border-bottom: 29.445727482678983px solid #dedeeb;
+}
+
+.c0:after {
+  top: 100%;
+  width: 0;
+  border-top: 29.445727482678983px solid #dedeeb;
+}
+
+.c0 .content {
+  position: relative;
+  top: -1px;
+}
+
+.c0 .content .icon {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c0 .content .header {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  text-align: center;
+}
+
+.c0 .content .react-flow__handle-bottom {
+  top: 87.33718244803694px;
+  z-index: 2;
+}
+
+.c1 {
+  left: 1px;
+  z-index: 1;
+  position: relative;
+  height: 58.736720554272516px;
+  width: 100px;
+  background-color: #f9fafb;
+  margin: 29.368360277136258px 0;
+}
+
+.c1:before,
+.c1:after {
+  content: '';
+  position: absolute;
+  width: 0;
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+}
+
+.c1:before {
+  bottom: 100%;
+  border-bottom: 28.368360277136258px solid #f9fafb;
+}
+
+.c1:after {
+  top: 100%;
+  width: 0;
+  border-top: 28.368360277136258px solid #f9fafb;
+}
+
+.c1 .content {
+  position: relative;
+  top: -1px;
+}
+
+.c1 .content .icon {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c1 .content .header {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  text-align: center;
+}
+
+.c1 .content .react-flow__handle-bottom {
+  top: 86.10508083140877px;
+  z-index: 2;
+}
+
+<div
+    className="c0 exagon"
+    size="medium"
+  >
+    <div
+      className="c1 exagon inner"
+      size="medium"
+    />
+  </div>,
+  "",
+]
+`;

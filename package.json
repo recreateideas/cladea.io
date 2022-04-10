@@ -1,0 +1,45 @@
+{
+  "name": "cladea.io",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "aws-cdk": "^2.20.0",
+    "dotenv": "^16.0.0"
+  },
+  "scripts": {
+    "deploy:stack": "BRANCH=$(git branch --show-current) && cdk deploy --profile website --require-approval never -c branchName=$BRANCH -c environment=dev",
+    "destroy:stack": "BRANCH=$(git branch --show-current) && cdk destroy --profile website -c branchName=$BRANCH -c environment=dev",
+    "bootstrap:stack": "BRANCH=$(git branch --show-current) && cdk bootstrap --profile website --require-approval never -c branchName=$BRANCH -c environment=dev",
+    "deploy:website": "lerna run deploy:code --scope @cladea.io/website --stream",
+    "build": "lerna run build  --scope @cladea.io/website --stream",
+    "start:website": "lerna run start --scope @cladea.io/website --stream",
+    "bootstrap:lerna": "npm i; lerna bootstrap; npm run build",
+    "dev": "npm run start:website"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@types/node": "^16.11.26",
+    "aws-cdk-lib": "^2.20.0",
+    "constructs": "^10.0.109",
+    "dotenv": "^16.0.0",
+    "lerna": "^4.0.0",
+    "typescript": "^4.6.3"
+  }
+}

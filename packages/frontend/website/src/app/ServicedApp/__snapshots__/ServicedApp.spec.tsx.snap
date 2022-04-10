@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ServicedApp/> should render 1`] = `
+Array [
+  .c0 {
+  height: 100%;
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c0 .react-spinner-material {
+  margin: auto;
+}
+
+.c1 {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  top: calc(50% + 40px);
+}
+
+<div
+    id="app"
+  >
+    <div
+      className="c0 loader setting-up"
+    >
+      <div
+        className="react-spinner-material"
+        style={
+          Object {
+            "borderColor": "#0FC9A5",
+            "borderWidth": 3,
+            "height": 40,
+            "width": 40,
+          }
+        }
+      />
+      <div
+        className="c1"
+      >
+        setting up services...
+      </div>
+    </div>
+  </div>,
+  "",
+]
+`;

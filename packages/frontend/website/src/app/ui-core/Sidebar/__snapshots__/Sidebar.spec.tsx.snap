@@ -1,0 +1,222 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Sidebar/> should render 1`] = `
+Array [
+  .c5 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  fill: currentColor;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-transition: fill 200ms cubic-bezier(0.4,0,0.2,1) 0ms;
+  transition: fill 200ms cubic-bezier(0.4,0,0.2,1) 0ms;
+  font-size: 1.5rem;
+}
+
+.c6 {
+  overflow: hidden;
+  pointer-events: none;
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-radius: inherit;
+}
+
+.c3 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  position: relative;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  background-color: transparent;
+  outline: 0;
+  border: 0;
+  margin: 0;
+  border-radius: 0;
+  padding: 0;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  vertical-align: middle;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  color: inherit;
+}
+
+.c3::-moz-focus-inner {
+  border-style: none;
+}
+
+.c3.Mui-disabled {
+  pointer-events: none;
+  cursor: default;
+}
+
+.c4 {
+  text-align: center;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  font-size: 1.5rem;
+  padding: 8px;
+  border-radius: 50%;
+  overflow: visible;
+  color: rgba(0,0,0,0.54);
+  -webkit-transition: background-color 150ms cubic-bezier(0.4,0,0.2,1) 0ms;
+  transition: background-color 150ms cubic-bezier(0.4,0,0.2,1) 0ms;
+  color: #12D8F7;
+}
+
+.c4:hover {
+  background-color: rgba(0,0,0,0.04);
+}
+
+.c4:hover {
+  background-color: rgba(18,216,247,0.04);
+}
+
+.c4.Mui-disabled {
+  background-color: transparent;
+  color: rgba(0,0,0,0.26);
+}
+
+.c0 {
+  height: 100%;
+  width: auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  position: absolute;
+  z-index: 50;
+  left: 0px;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+.c1 {
+  height: 100%;
+  background-color: #f9fafb;
+  -webkit-transition: width 0.2s ease-in-out;
+  transition: width 0.2s ease-in-out;
+  width: 0px;
+  overflow: hidden;
+}
+
+.c2 {
+  position: relative;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  border-radius: 100%;
+  cursor: pointer;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  top: 4px;
+}
+
+@media print {
+  .c3 {
+    color-adjust: exact;
+  }
+}
+
+@media (hover:none) {
+  .c4:hover {
+    background-color: transparent;
+  }
+}
+
+@media (hover:none) {
+  .c4:hover {
+    background-color: transparent;
+  }
+}
+
+<div
+    className="c0 sidebar"
+    from="left"
+    type="overlay"
+    width={200}
+  >
+    <div
+      className="c1 sidebar-content"
+      from="left"
+      width={200}
+    >
+      <div>
+        <div>
+          some content
+        </div>
+      </div>
+    </div>
+    <div
+      className="c2 sidebar-handle"
+      onClick={[Function]}
+    >
+      <div
+        className="icon-button"
+      >
+        <button
+          className="c3 MuiButtonBase-root c4 MuiIconButton-root MuiIconButton-colorSecondary MuiIconButton-sizeMedium"
+          disabled={false}
+          onBlur={[Function]}
+          onContextMenu={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={0}
+          type="button"
+        >
+          <svg
+            aria-hidden={true}
+            className="c5 MuiSvgIcon-root MuiSvgIcon-fontSizeMedium"
+            data-testid="ChevronLeftIcon"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z"
+            />
+          </svg>
+          <span
+            className="c6 MuiTouchRipple-root"
+          />
+        </button>
+      </div>
+    </div>
+  </div>,
+  "",
+]
+`;
