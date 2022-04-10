@@ -5,7 +5,7 @@ export const initialState: AppState = {
     toggles: {},
   },
   theme: {
-    mode: "light",
+    mode: "dark",
     userAgent: undefined,
   },
 };

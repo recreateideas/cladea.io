@@ -11,7 +11,7 @@ import { Theme } from "src/app/ui-core";
 import { sizes as fontSizes } from "./typography/styles";
 import hexToRgba from "hex-rgba";
 
-export const createTheme = (mode: ThemeMode = "light") => {
+export const createTheme = (mode: ThemeMode = "dark") => {
   const palette = paletteFactory(mode);
   const typefaces = typefaceFactory(mode);
   const dsl = {

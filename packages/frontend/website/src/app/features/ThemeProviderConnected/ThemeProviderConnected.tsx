@@ -23,7 +23,8 @@ export const ThemeProviderConnected = (props: IProps) => {
   const userAgentStore = useSelector(themeSelectors.userAgent);
   const userAgent = useUserAgent();
   const browserMode = (isSystemDarkMode: boolean) =>
-    isSystemDarkMode ? "dark" : "light";
+    // isSystemDarkMode ? "dark" : "light";
+    isSystemDarkMode ? "dark" : ("dark" as ThemeMode);
 
   useEffect(() => {
     if (userAgent && !isEqual(userAgentStore, userAgent)) {
@@ -52,7 +53,7 @@ export const ThemeProviderConnected = (props: IProps) => {
   }, []);
 
   return mode ? (
-    <ThemeProvider {...{ mode }}>{children}</ThemeProvider>
+    <ThemeProvider {...{ mode, userAgent }}>{children}</ThemeProvider>
   ) : (
     <div className="no-theme">{children}</div>
   );

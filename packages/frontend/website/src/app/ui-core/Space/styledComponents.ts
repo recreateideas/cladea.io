@@ -103,7 +103,7 @@ export const Planet = styled.div<{ size?: number }>`
       },
     } = props;
     const topPercent = Math.max(10, Math.floor(Math.random() * 50));
-    const leftPercent = Math.max(20, Math.floor(Math.random() * 100) + 1);
+    const leftPercent = Math.max(25, Math.floor(Math.random() * 100) + 1);
     const rndSize = size + Math.floor(Math.random() * 20);
     return css`
       img {

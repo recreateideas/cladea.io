@@ -9,10 +9,10 @@ export const Space = (props: IProps): ReactElement => {
       {new Array(150).fill("").map((_, i) => {
         return <Star key={i} />;
       })}
-      <Moon size={100}>
+      <Moon>
         <img src={moon} alt="planet" />
       </Moon>
-      <Planet size={50}>
+      <Planet>
         <img src={planet} alt="planet" />
       </Planet>
     </Container>
