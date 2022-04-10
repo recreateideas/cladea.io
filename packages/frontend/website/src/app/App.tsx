@@ -46,7 +46,7 @@ export const App = (): ReactElement => {
             );
           })}
           <Route path="/">
-            <Redirect exact to="/home" />
+            <Redirect exact to="/" />
           </Route>
         </Switch>
       </Router>

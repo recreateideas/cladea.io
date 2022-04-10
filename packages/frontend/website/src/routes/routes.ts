@@ -3,7 +3,7 @@ import { Home } from "../app/pages";
 export const routes = {
   home: {
     title: "Editor",
-    path: "/home",
+    path: "/",
     exact: true,
     components: {
       mainView: Home,

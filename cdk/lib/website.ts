@@ -39,6 +39,18 @@ export default class Website extends Stack {
         },
         aliases: ["www.cladea.io"],
       },
+      errorConfigurations: [
+        {
+          errorCode: 403,
+          responseCode: 200,
+          responsePagePath: "/index.html",
+        },
+        {
+          errorCode: 404,
+          responseCode: 200,
+          responsePagePath: "/index.html",
+        },
+      ],
       originConfigs: [
         {
           behaviors: [
