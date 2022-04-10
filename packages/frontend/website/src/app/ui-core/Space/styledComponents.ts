@@ -6,6 +6,30 @@ export const Container = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
+  ${(props) => {
+    const {
+      theme: {
+        dsl: { palette },
+      },
+    } = props;
+    return css`
+      background: linear-gradient(
+          217deg,
+          ${palette.primary.darkIndigo[950]},
+          rgba(0, 0, 0, 0) 70.71%
+        ),
+        linear-gradient(
+          127deg,
+          ${palette.primary.darkIndigo[950]},
+          rgba(0, 0, 0, 0) 70.71%
+        ),
+        linear-gradient(
+          336deg,
+          ${palette.primary.darkIndigo[850]},
+          rgba(0, 0, 0, 0) 70.71%
+        );
+    `;
+  }}
 `;
 
 export const Star = styled.div<{ maxSize?: number }>`
@@ -24,7 +48,7 @@ export const Star = styled.div<{ maxSize?: number }>`
     const top = Math.floor(Math.random() * innerHeight) + 1;
     const left = Math.floor(Math.random() * innerWidth) + 1;
     const size = Math.floor(Math.random() * maxSize) + 1;
-    const duration = Math.random() * 5 + 2;
+    const duration = Math.random() * 10 + 2;
     const brightness = 100 + size * (155 / maxSize);
     return css`
       top: ${top}px;
@@ -32,7 +56,7 @@ export const Star = styled.div<{ maxSize?: number }>`
       width: ${size}px;
       height: ${size}px;
       background-color: rgb(${brightness}, ${brightness}, ${brightness});
-      ${glimmer({ duration, size, brightness })}
+      ${glimmer({ duration, size: size * 1.5, brightness })}
     `;
   }}
 `;

@@ -13,7 +13,7 @@ afterEach(() => {
 
 const { fullMount, fullShallow } = TestProvider({});
 
-describe("<Editor/>", () => {
+describe("<Home/>", () => {
   const dispatchSpy = jest.fn();
   const loadSpy = jest.fn();
   const state = {

@@ -2,7 +2,7 @@ import { Home } from "../app/pages";
 
 export const routes = {
   home: {
-    title: "Editor",
+    title: "Home",
     path: "/",
     exact: true,
     components: {

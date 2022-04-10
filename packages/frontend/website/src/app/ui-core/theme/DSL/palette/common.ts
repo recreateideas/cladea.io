@@ -35,7 +35,9 @@ export const primary = {
     600: "#1D124A",
     700: "#180F40",
     800: "#140C37",
+    850: "#13152d",
     900: "#0B0627",
+    950: "#191c24",
   } as ThemeColor,
   royalBlueDark: {
     500: "#031A51",
