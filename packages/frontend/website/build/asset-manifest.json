@@ -1,7 +1,9 @@
 {
   "files": {
     "main.css": "/static/css/main.ac3ef418.css",
-    "main.js": "/static/js/main.4b4e456c.js",
+    "main.js": "/static/js/main.e213f7f9.js",
+    "static/media/moon.png": "/static/media/moon.723a9e1cdbf49f849281.png",
+    "static/media/planet.png": "/static/media/planet.d6b467d3b167697003de.png",
     "static/media/logo.svg": "/static/media/logo.f4791bb0e4ee24b9f413541db12491e9.svg",
     "static/media/ico-aws-sqs.svg": "/static/media/ico-aws-sqs.7972e8e0d047a3358ca4677a342816fb.svg",
     "static/media/ico-aws-eventbridge.svg": "/static/media/ico-aws-eventbridge.368ba22994d6a6d448392678a5a63b74.svg",
@@ -14,10 +16,10 @@
     "static/media/ico-aws-s3-bucket.svg": "/static/media/ico-aws-s3-bucket.36a78eac7796ad00d6b2926580b41e89.svg",
     "index.html": "/index.html",
     "main.ac3ef418.css.map": "/static/css/main.ac3ef418.css.map",
-    "main.4b4e456c.js.map": "/static/js/main.4b4e456c.js.map"
+    "main.e213f7f9.js.map": "/static/js/main.e213f7f9.js.map"
   },
   "entrypoints": [
     "static/css/main.ac3ef418.css",
-    "static/js/main.4b4e456c.js"
+    "static/js/main.e213f7f9.js"
   ]
 }

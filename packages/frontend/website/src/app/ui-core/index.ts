@@ -12,3 +12,5 @@ export * from "./Checkbox";
 export * from "./Checklist";
 export * from "./Spinner";
 export * from "./HeroMessage";
+export * from "./Space";
+export * as images from "./images";
