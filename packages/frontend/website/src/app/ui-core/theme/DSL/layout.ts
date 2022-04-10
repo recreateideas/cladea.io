@@ -45,6 +45,7 @@ export const height = {
 };
 
 export const namedZIndex = {
+  leftSidebar: 1000,
   starrySkyPlanet: 49,
   starrySkyMoon: 50,
 };
