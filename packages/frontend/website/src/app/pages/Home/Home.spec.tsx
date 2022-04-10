@@ -1,5 +1,5 @@
 /* eslint-disable import/first */
-import { Editor } from "./Home";
+import { Home } from "./Home";
 jest.mock("src/redux");
 import * as redux from "src/redux";
 import { Container } from "./styledComponents";
@@ -30,14 +30,14 @@ describe("<Editor/>", () => {
     },
   };
   it("should render", () => {
-    const root = fullShallow(<Editor />, state);
+    const root = fullShallow(<Home />, state);
     const container = root.find(Container);
     expect(container).toMatchSnapshot();
     expect(root).toMatchSnapshot();
   });
   it("should load the elements on load", () => {
     jest.spyOn(redux, "useDispatch").mockReturnValue(dispatchSpy);
-    const root = fullMount(<Editor />, state);
+    const root = fullMount(<Home />, state);
     root.update();
     expect(loadSpy).toHaveBeenCalledTimes(1);
   });
@@ -50,7 +50,7 @@ describe("<Editor/>", () => {
       { id: "some", position: { x: 0, y: 0 }, data: {} },
       { id: "elements", position: { x: 0, y: 0 }, data: {} },
     ]);
-    const root = fullMount(<Editor />, newState);
+    const root = fullMount(<Home />, newState);
     root.update();
     expect(loadSpy).not.toHaveBeenCalledTimes(1);
   });

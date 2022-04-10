@@ -1,4 +1,4 @@
-import { Theme } from "./App/ui-core/theme";
+import { Theme } from "./app/ui-core/theme";
 import { Store } from "redux";
 
 export declare global {

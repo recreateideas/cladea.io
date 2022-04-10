@@ -1,5 +1,5 @@
-import { createGlobalStyle } from 'styled-components';
-import { Theme } from '@types';
+import { createGlobalStyle } from "styled-components";
+import { Theme } from "src/app/ui-core/theme";
 
 export const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
   html, body, #root {

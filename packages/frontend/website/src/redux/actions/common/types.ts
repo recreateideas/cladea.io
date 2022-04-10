@@ -1,12 +1,7 @@
-import { CommonActionTypes } from '@types';
+import { CommonActionTypes } from "src/redux";
 
 const types: CommonActionTypes = {
-    SET_IS_DEV: 'SET_IS_DEV',
-    SET_IS_ELECTRON: 'SET_IS_ELECTRON',
-    GET_SERVICE_PORTS_PENDING: 'GET_SERVICE_PORTS_PENDING',
-    GET_SERVICE_PORTS_SUCCESS: 'GET_SERVICE_PORTS_SUCCESS',
-    SET_SERVICE_PORTS: 'SET_SERVICE_PORTS',
-    GET_SERVICE_PORTS_SKIPPED: 'GET_SERVICE_PORTS_SKIPPED',
+  SET_IS_DEV: "SET_IS_DEV",
 };
 
 export default types;

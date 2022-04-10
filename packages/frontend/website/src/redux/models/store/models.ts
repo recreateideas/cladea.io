@@ -1,6 +1,6 @@
 import { Action, Store } from "redux";
 import { RouterState } from "connected-react-router";
-import { ThemeMode } from "../..";
+import { ThemeMode } from "src/app/ui-core";
 
 export type GetStore = () => IReduxStore;
 export interface IReduxAction extends Action {
@@ -19,7 +19,6 @@ export interface AppState {
   common: {
     toggles: {
       [toggleName: string]: boolean;
-      isDev?: boolean;
     };
   };
 

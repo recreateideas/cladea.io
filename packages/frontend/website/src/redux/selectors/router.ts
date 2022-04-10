@@ -1,9 +1,10 @@
-import { RouterLocation } from 'connected-react-router';
-import { Selector } from 'react-redux';
-import { IReduxStore } from '@types';
+import { RouterLocation } from "connected-react-router";
+import { Selector } from "react-redux";
+import { IReduxStore } from "src/redux";
 
-const location: Selector<IReduxStore, RouterLocation<any>> = (state) => state.router.location;
+const location: Selector<IReduxStore, RouterLocation<any>> = (state) =>
+  state.router.location;
 const query: Selector<IReduxStore, Record<string, string>> = (state) =>
-    state.router.location?.query;
+  state.router.location?.query;
 
 export { location, query };

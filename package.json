@@ -12,7 +12,7 @@
     "bootstrap:stack": "BRANCH=$(git branch --show-current) && cdk bootstrap --profile website --require-approval never -c branchName=$BRANCH -c environment=dev",
     "deploy:website": "lerna run deploy:code --scope @cladea.io/website --stream",
     "build": "lerna run build  --scope @cladea.io/website --stream",
-    "start:website": "lerna run start --scope @cladea.io/website --stream",
+    "start": "lerna run start --scope @cladea.io/website --stream",
     "bootstrap:lerna": "npm i; lerna bootstrap; npm run build",
     "dev": "npm run start:website"
   },

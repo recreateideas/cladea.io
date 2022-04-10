@@ -1,4 +1,4 @@
-import { Editor } from "../app/pages";
+import { Home } from "../app/pages";
 
 export const routes = {
   home: {
@@ -6,8 +6,8 @@ export const routes = {
     path: "/home",
     exact: true,
     components: {
-      mainView: Editor,
+      mainView: Home,
     },
-    context: "editor",
+    context: "root",
   },
 };

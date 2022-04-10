@@ -1,6 +1,5 @@
 export * from "./theme";
 export * from "./Loader";
-export * from "./WindowHeader";
 export * from "./Sidebar";
 export * from "./IconButton";
 export * from "./SVGIcon";
@@ -8,7 +7,6 @@ export * from "./Modal";
 export * from "./Button";
 export * from "./Input";
 export * from "./Select";
-export * from "./NodeAvatar";
 export * from "./Accordion";
 export * from "./Checkbox";
 export * from "./Checklist";
