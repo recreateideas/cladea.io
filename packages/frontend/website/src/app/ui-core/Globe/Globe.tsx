@@ -15,7 +15,7 @@ export const Globe = (props: IProps): ReactElement => {
   const theme = useTheme() as TypeAndUserAgent;
   const [containerWidth, setContainerWidth] = useState(0);
   const polygonsMaterial = new THREE.MeshLambertMaterial({
-    color: theme.dsl.palette.primary.purple[800],
+    color: theme.dsl.palette.primary.purple[600],
     side: THREE.DoubleSide,
   });
   const landPolygons: any = (

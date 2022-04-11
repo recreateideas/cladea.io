@@ -48,5 +48,6 @@ export const namedZIndex = {
   leftSidebar: 1000,
   starrySkyPlanet: 49,
   starrySkyMoon: 50,
-  homeWorldMap: 51,
+  starrySkyUfo: 51,
+  homeWorldMap: 52,
 };

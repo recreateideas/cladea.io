@@ -8,7 +8,9 @@ const keyFrames =
     box-shadow:none;
   }
   60%, 80% {
-    box-shadow: 0px 0px ${size}px 1px rgba(${brightness},${brightness},${brightness},0.73);
+    box-shadow: 0px 0px ${
+      size * 1.5
+    }px 1px rgba(${brightness},${brightness},${brightness},0.9);
   }`;
   };
 

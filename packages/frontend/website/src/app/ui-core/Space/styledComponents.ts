@@ -115,3 +115,37 @@ export const Planet = styled.div<{ size?: number }>`
     `;
   }}
 `;
+
+export const Ufo = styled.div`
+  ${(props) => {
+    const {
+      theme: {
+        dsl: {
+          animations: { orbit },
+          layout: {
+            namedZIndex: { starrySkyUfo },
+          },
+        },
+      },
+    } = props;
+    const { innerHeight, innerWidth } = window;
+    const diagonal = Math.sqrt(
+      Math.pow(innerHeight, 2) + Math.pow(innerWidth, 2)
+    );
+    return css`
+      display: flex;
+      position: absolute;
+      z-index: ${starrySkyUfo};
+      left: ${innerWidth * 0.75}px;
+      bottom: 0;
+      ${orbit({
+        radius: diagonal * 0.7,
+        duration: 15,
+        startingImageAngle: 108,
+      })};
+      img {
+        width: 72px;
+      }
+    `;
+  }}
+`;

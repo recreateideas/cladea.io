@@ -1,14 +1,17 @@
 import { ReactElement } from "react";
-import { moon, planet } from "../images";
-import { Container, Star, Moon, Planet } from "./styledComponents";
+import { moon, planet, ufo } from "../images";
+import { Container, Star, Moon, Planet, Ufo } from "./styledComponents";
 
 interface IProps {}
 export const Space = (props: IProps): ReactElement => {
   return (
-    <Container>
-      {new Array(150).fill("").map((_, i) => {
-        return <Star key={i} />;
+    <Container className="space">
+      {new Array(200).fill("").map((_, i) => {
+        return <Star className="star" key={i} />;
       })}
+      <Ufo>
+        <img src={ufo} alt="flying-saucer" />
+      </Ufo>
       <Moon>
         <img src={moon} alt="planet" />
       </Moon>
