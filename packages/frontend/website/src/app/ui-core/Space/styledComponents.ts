@@ -74,7 +74,7 @@ export const Moon = styled.div<{ size?: number }>`
         },
       },
     } = props;
-    const bottomPercent = Math.max(15, Math.floor(Math.random() * 50) + 1);
+    const bottomPercent = Math.max(5, Math.floor(Math.random() * 10) + 1);
     const leftPercent = Math.max(15, Math.floor(Math.random() * 100) + 1);
     const rndSize = size - Math.floor(Math.random() * 20);
     return css`
@@ -102,7 +102,7 @@ export const Planet = styled.div<{ size?: number }>`
         },
       },
     } = props;
-    const topPercent = Math.max(10, Math.floor(Math.random() * 50));
+    const topPercent = Math.max(5, Math.floor(Math.random() * 10));
     const leftPercent = Math.max(25, Math.floor(Math.random() * 100) + 1);
     const rndSize = size + Math.floor(Math.random() * 20);
     return css`
@@ -110,7 +110,7 @@ export const Planet = styled.div<{ size?: number }>`
         width: ${rndSize}px;
       }
       z-index: ${starrySkyPlanet};
-      top: calc(${topPercent}% + 200px);
+      top: calc(${topPercent}% + 0px);
       left: calc(${leftPercent}% - ${size}px);
     `;
   }}

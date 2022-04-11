@@ -1,3 +1,5 @@
+export * as images from "./images";
+
 export * from "./theme";
 export * from "./Loader";
 export * from "./Sidebar";
@@ -13,4 +15,4 @@ export * from "./Checklist";
 export * from "./Spinner";
 export * from "./HeroMessage";
 export * from "./Space";
-export * as images from "./images";
+export * from "./Globe";
