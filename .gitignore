@@ -46,6 +46,7 @@ __tsoa.json
 
 
 build/src
+packages/frontend/website/build
 build/lambda-tests
 
 # beem-gen-json-schemas
