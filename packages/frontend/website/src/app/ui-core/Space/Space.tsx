@@ -6,7 +6,7 @@ interface IProps {}
 export const Space = (props: IProps): ReactElement => {
   return (
     <Container className="space">
-      {new Array(200).fill("").map((_, i) => {
+      {new Array(155).fill("").map((_, i) => {
         return <Star className="star" key={i} />;
       })}
       <Ufo>
