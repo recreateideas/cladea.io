@@ -139,7 +139,7 @@ export const Ufo = styled.div`
       left: ${innerWidth * 0.75}px;
       bottom: 0;
       ${orbit({
-        radius: diagonal * 0.7,
+        radius: diagonal * 0.6,
         duration: 15,
         startingImageAngle: 108,
       })};

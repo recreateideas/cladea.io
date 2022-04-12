@@ -9,11 +9,17 @@ import { Container } from "./styledComponents";
 import { GeometryObject, Topology } from "topojson-specification";
 import { FeatureCollection, Geometry } from "geojson";
 
+interface ContainerSize {
+  width: number;
+  height: number;
+}
 interface IProps {}
 export const Globe = (props: IProps): ReactElement => {
   const globeEl = useRef();
   const theme = useTheme() as TypeAndUserAgent;
-  const [containerWidth, setContainerWidth] = useState(0);
+  const [containerSize, setContainerSize] = useState<ContainerSize>(
+    {} as ContainerSize
+  );
   const polygonsMaterial = new THREE.MeshLambertMaterial({
     color: theme.dsl.palette.primary.purple[600],
     side: THREE.DoubleSide,
@@ -37,9 +43,17 @@ export const Globe = (props: IProps): ReactElement => {
 
   return (
     <Container
+      className="globe-container"
       ref={(refEl) => {
-        if (refEl) {
-          setContainerWidth(Math.min(refEl.offsetWidth, refEl.offsetHeight));
+        if (
+          refEl &&
+          (containerSize.width !== refEl.offsetWidth ||
+            containerSize.height !== refEl.offsetHeight)
+        ) {
+          setContainerSize({
+            width: refEl.offsetWidth,
+            height: refEl.offsetHeight,
+          });
         }
       }}
     >
@@ -55,7 +69,8 @@ export const Globe = (props: IProps): ReactElement => {
       /> */}
       <GlobeComp
         ref={globeEl}
-        width={containerWidth}
+        height={containerSize.height}
+        width={containerSize.width}
         globeImageUrl={images.plainDeepBlue}
         backgroundColor="rgba(0,0,0,0)"
         showGlobe={true}

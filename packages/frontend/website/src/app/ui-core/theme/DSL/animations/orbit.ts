@@ -11,10 +11,10 @@ const keyFrames =
   () => {
     return keyframes`
     from {
-      transform: rotate(0deg) translate(${radius}px) rotate(${startingImageAngle}deg);
+      transform: rotate(0deg) translate(${radius}px) rotate(${startingImageAngle}deg) scale(1);
     }
     to {
-      transform: rotate(360deg) translate(${radius}px) rotate(${startingImageAngle}deg);
+      transform: rotate(360deg) translate(${radius}px) rotate(${startingImageAngle}deg) scale(0.5);
     }
     `;
   };
