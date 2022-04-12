@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled, { css, FlattenInterpolation } from "styled-components";
 
 export const Container = styled.div`
   position: absolute;
@@ -32,33 +32,8 @@ export const Container = styled.div`
   }}
 `;
 
-export const Star = styled.div<{ maxSize?: number }>`
-  position: absolute;
-  border-radius: 100%;
-  ${(props) => {
-    const {
-      maxSize = 4,
-      theme: {
-        dsl: {
-          animations: { glimmer },
-        },
-      },
-    } = props;
-    const { innerHeight, innerWidth } = window;
-    const top = Math.floor(Math.random() * innerHeight) + 1;
-    const left = Math.floor(Math.random() * innerWidth) + 1;
-    const size = Math.floor(Math.random() * maxSize) + 1;
-    const duration = Math.random() * 10 + 2;
-    const brightness = 100 + size * (155 / maxSize);
-    return css`
-      top: ${top}px;
-      left: ${left}px;
-      width: ${size}px;
-      height: ${size}px;
-      background-color: rgb(${brightness}, ${brightness}, ${brightness});
-      ${glimmer({ duration, size: size * 1.5, brightness })}
-    `;
-  }}
+export const Star = styled.div<{ styledCss?: FlattenInterpolation<any> }>`
+  ${(props) => props.styledCss}
 `;
 
 export const Moon = styled.div<{ size?: number }>`
