@@ -4,13 +4,18 @@ import {
   OriginAccessIdentity,
 } from "aws-cdk-lib/aws-cloudfront";
 import { BlockPublicAccess, Bucket } from "aws-cdk-lib/aws-s3";
+import { Certificate } from "aws-cdk-lib/aws-certificatemanager";
 import { BucketDeployment, Source } from "aws-cdk-lib/aws-s3-deployment";
 import { Construct } from "constructs";
 import * as path from "path";
 import { getBranchName } from "./helpers";
 
-export default class Website extends Stack {
-  constructor(scope: Construct, id: string, props?: StackProps) {
+interface Props extends StackProps {
+  apiGatewayUrl: string;
+}
+
+export default class CladeaWebsite extends Stack {
+  constructor(scope: Construct, id: string, props: Props) {
     super(scope, id, {
       ...props,
     });
