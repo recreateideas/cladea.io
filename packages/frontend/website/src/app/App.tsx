@@ -3,7 +3,12 @@ import { ConnectedRouter as Router } from "connected-react-router";
 import { Switch, Redirect, Route } from "react-router-dom";
 import { history } from "../redux";
 import { routes } from "../routes";
-import { ErrorBoundary, AuthenticatedRoute, Sidebar } from "./features";
+import {
+  ErrorBoundary,
+  AuthenticatedRoute,
+  Sidebar,
+  Tracker,
+} from "./features";
 import { actions, useDispatch } from "src/redux";
 
 export const App = (): ReactElement => {
@@ -18,7 +23,6 @@ export const App = (): ReactElement => {
 
   return (
     <ErrorBoundary>
-      <Sidebar />
       <Router {...{ history }}>
         <Switch>
           {Object.values(routes).map((routeObj, i) => {
@@ -38,8 +42,11 @@ export const App = (): ReactElement => {
                   //     <PageContainer>
                   //         <Header title={title} />
                   //         <PageContent className="page-content">
-                  /* istanbul ignore next */
-                  <Component {...props} />
+                  <>
+                    <Tracker />
+                    <Sidebar />
+                    <Component {...props} />
+                  </>
                   //         </PageContent>
                   //     </PageContainer>
                 )}

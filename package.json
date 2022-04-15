@@ -9,7 +9,7 @@
     "describe:stack": "ts-node cdk/scripts/describe-stack.ts website-master-api",
     "destroy:stack": "BRANCH=$(git branch --show-current) && cdk destroy --all --profile website -c branchName=$BRANCH -c environment=dev",
     "bootstrap:stack": "BRANCH=$(git branch --show-current) && cdk bootstrap --profile website --require-approval never -c branchName=$BRANCH -c environment=dev",
-    "deploy:website": "lerna run deploy:code --scope @cladea.io/website --stream",
+    "deploy:website": "npm run describe:stack && lerna run deploy:code --scope @cladea.io/website --stream",
     "build": "lerna run build  --scope @cladea.io/website --stream",
     "start": "lerna run start --scope @cladea.io/website --stream",
     "bootstrap:lerna": "npm i; lerna bootstrap; npm run build",
@@ -38,9 +38,11 @@
     "aws-cdk": "^2.20.0",
     "aws-sdk": "^2.1115.0",
     "dotenv": "^16.0.0",
+    "fs-extra": "^10.0.1",
     "ts-node": "^10.7.0"
   },
   "devDependencies": {
+    "@types/fs-extra": "^9.0.13",
     "@types/node": "^16.11.26",
     "aws-cdk-lib": "^2.20.0",
     "constructs": "^10.0.109",

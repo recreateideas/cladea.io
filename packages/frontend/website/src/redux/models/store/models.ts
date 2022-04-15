@@ -15,11 +15,20 @@ export interface UserAgent {
   isIos: boolean;
 }
 
+export interface UsageData {
+  current: {
+    [toggleName: string]: boolean;
+  };
+  global: {
+    [toggleName: string]: boolean;
+  };
+}
 export interface AppState {
   common: {
     toggles: {
       [toggleName: string]: boolean;
     };
+    usageData?: UsageData;
   };
 
   theme: {

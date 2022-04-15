@@ -6,4 +6,6 @@ const getToggle =
   (state) =>
     state.appState.common.toggles[toggle];
 
-export { getToggle };
+const usageData = (state: IReduxStore) => state.appState.common.usageData;
+
+export { getToggle, usageData };

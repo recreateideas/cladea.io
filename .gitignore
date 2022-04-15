@@ -55,3 +55,5 @@ compiled-schemas
 cdk.out
 
 .env
+
+.stack.env

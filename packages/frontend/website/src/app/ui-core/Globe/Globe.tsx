@@ -8,6 +8,7 @@ import { land110m } from "src/data";
 import { Container } from "./styledComponents";
 import { GeometryObject, Topology } from "topojson-specification";
 import { FeatureCollection, Geometry } from "geojson";
+import { selectors, useSelector } from "src/redux";
 
 const places = [
   { name: "france", lat: 46.227638, lng: 2.213749, size: 120, color: "white" },
@@ -42,11 +43,17 @@ interface IProps {}
 export const Globe = (props: IProps): ReactElement => {
   const globeEl = useRef();
   const theme = useTheme() as TypeAndUserAgent;
+  const { common: commonSelectors } = selectors;
+  const { current } = useSelector(commonSelectors.usageData) || {
+    current: {},
+    global: {},
+  };
+
   const [containerSize, setContainerSize] = useState<ContainerSize>(
     {} as ContainerSize
   );
   const polygonsMaterial = new THREE.MeshLambertMaterial({
-    color: theme.dsl.palette.primary.purple[600],
+    color: theme.dsl.palette.primary.purple[400],
     side: THREE.DoubleSide,
   });
   const landPolygons: any = (
@@ -56,19 +63,28 @@ export const Globe = (props: IProps): ReactElement => {
     ) as FeatureCollection<Geometry, {}>
   ).features;
 
+  const originRing = {
+    lat: current.latitude,
+    lng: current.longitude,
+  };
+
   useEffect(() => {
     const curr = globeEl.current as any;
     const altitude = theme.userAgent?.isMobile ? 4 : 3;
     if (curr) {
+      const coord = curr.getCoords(current.latitude, current.longitude);
       curr.controls().enablePan = false;
       curr.controls().touches = { ONE: 2, TWO: 2 };
-
       curr.controls().enableZoom = false;
       curr.controls().autoRotate = true;
       curr.controls().autoRotateSpeed = 0.7;
+      curr.controls().object.position.x = coord.x;
+      curr.controls().object.position.y = coord.y;
+      curr.controls().object.position.z = coord.z;
+      console.log(curr.controls().object.position);
       curr.pointOfView({ altitude }, 5000);
     }
-  }, [globeEl, theme.userAgent?.isMobile]);
+  }, [globeEl, theme.userAgent?.isMobile, current.latitude, current.longitude]);
 
   return (
     <Container
@@ -86,16 +102,6 @@ export const Globe = (props: IProps): ReactElement => {
         }
       }}
     >
-      {/* <GlobeComp
-        {...{
-          globeImageUrl:
-            "https://unpkg.com/three-globe@2.24.4/example/img/earth-blue-marble.jpg",
-          bumpImageUrl:
-            "https://unpkg.com/three-globe@2.24.4/example/img/earth-topology.png",
-          //   backgroundImageUrl:
-          //     "//unpkg.com/three-globe/example/img/night-sky.png",
-        }}
-      /> */}
       <GlobeComp
         ref={globeEl}
         height={containerSize.height}
@@ -105,20 +111,27 @@ export const Globe = (props: IProps): ReactElement => {
         showGlobe={true}
         showAtmosphere={false}
         polygonsData={landPolygons}
-        polygonAltitude={() => 0.05}
         polygonCapMaterial={polygonsMaterial}
         polygonSideColor={() =>
           theme.dsl.hexToRgba(theme.dsl.palette.secondary.neon[500], 5)
         }
+        // rings
+        ringAltitude={0.02}
+        ringsData={[originRing]}
+        ringResolution={256}
+        ringMaxRadius={10}
+        ringPropagationSpeed={7}
+        ringColor={() => theme.dsl.palette.tertiary.pink[900]}
+        ringRepeatPeriod={700}
         // bars
         hexBinPointsData={places}
         hexBinPointWeight="size"
-        hexBinResolution={4}
+        hexBinResolution={3}
         hexTopColor={() =>
           theme.dsl.hexToRgba(theme.dsl.palette.tertiary.pink[500], 100)
         }
         hexSideColor={(d) =>
-          theme.dsl.hexToRgba(theme.dsl.palette.secondary.neon[500], 50)
+          theme.dsl.hexToRgba(theme.dsl.palette.secondary.neon[500], 100)
         }
         hexAltitude={(d) => d.sumWeight / 2000}
         enablePointerInteraction={false}

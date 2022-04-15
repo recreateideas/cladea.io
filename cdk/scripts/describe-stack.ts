@@ -4,8 +4,12 @@ import {
   DescribeStacksCommand,
 } from "@aws-sdk/client-cloudformation";
 import * as AWS from "aws-sdk";
+import fs from "fs-extra";
+import path from "path";
 
-const whitelist = [{ key: "apiGatewayUrl", envName: "API_GATEWAY_URL" }];
+const whitelist = [
+  { key: "apiGatewayUrl", envName: "REACT_APP_API_GATEWAY_URL" },
+];
 
 (async () => {
   try {
@@ -26,27 +30,25 @@ const whitelist = [{ key: "apiGatewayUrl", envName: "API_GATEWAY_URL" }];
       (stack) => stack.StackName === stackName
     );
     if (stack) {
-      const variables = (stack.Outputs || [])
+      const variablesEnvFile = (stack.Outputs || [])
         .filter(
           ({ OutputKey }) =>
             OutputKey && whitelist.find((w) => w.key === OutputKey)
         )
         .reduce(
-          (acc, { OutputKey, OutputValue }) => ({
-            ...acc,
-            [String(whitelist.find((w) => w.key === OutputKey)?.envName)]:
-              String(OutputValue),
-          }),
-          {} as Record<string, string>
+          (acc, { OutputKey, OutputValue }) =>
+            acc +
+            `export ${String(
+              whitelist.find((w) => w.key === OutputKey)?.envName
+            )}=${String(OutputValue)};`,
+          ""
         );
-      process.env = {
-        ...process.env,
-        ...variables,
-      };
-      console.log(process.env);
+      fs.writeFileSync(
+        path.resolve(__dirname, "../../.stack.env"),
+        variablesEnvFile
+      );
     }
   } catch (err) {
     console.log(err);
-    /* NOOP */
   }
 })();

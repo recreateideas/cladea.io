@@ -17,6 +17,12 @@ const common = (
           isDev: data.isDev,
         },
       };
+    case types.USAGE_REQUEST_SUCCESS:
+      return {
+        ...state,
+        usageData: data.usageData,
+      };
+
     default:
       return state;
   }

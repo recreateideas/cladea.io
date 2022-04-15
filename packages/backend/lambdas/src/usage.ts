@@ -25,7 +25,15 @@ export const handler = async function (event: APIGatewayProxyEvent) {
 
   return {
     statusCode: 200,
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(response.data),
+    headers: {
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Headers": "Content-Type",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "*",
+    },
+    body: JSON.stringify({
+      current: { userAgent, ...response.data },
+      global: {},
+    }),
   };
 };
