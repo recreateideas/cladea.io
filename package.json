@@ -5,7 +5,7 @@
   "scripts": {
     "__note__": "run with --require-approval never for ci",
     "cdk:diff": "BRANCH=$(git branch --show-current) && cdk diff --profile website branchName=$BRANCH -c environment=dev",
-    "deploy:stack": "BRANCH=$(git branch --show-current) && cdk deploy --all --profile website -c branchName=$BRANCH -c environment=dev",
+    "deploy:stack": "BRANCH=$(git branch --show-current) && cdk deploy --all --require-approval never --profile website -c branchName=$BRANCH -c environment=dev",
     "describe:stack": "ts-node cdk/scripts/describe-stack.ts website-master-api",
     "destroy:stack": "BRANCH=$(git branch --show-current) && cdk destroy --all --profile website -c branchName=$BRANCH -c environment=dev",
     "diff:stack": "BRANCH=$(git branch --show-current) && cdk diff --all --profile website -c branchName=$BRANCH -c environment=dev",

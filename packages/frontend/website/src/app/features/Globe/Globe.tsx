@@ -9,30 +9,27 @@ import { GeometryObject, Topology } from "topojson-specification";
 import { FeatureCollection, Geometry } from "geojson";
 import { selectors, useSelector } from "src/redux";
 
-const places = [
-  { name: "france", lat: 46.227638, lng: 2.213749, size: 120, color: "white" },
-  {
-    name: "spain",
-    lat: 40.463667,
-    lng: -3.7492199999999998,
-    size: 200,
-    color: "white",
-  },
-  {
-    name: "saudi arabia",
-    lat: 23.885942,
-    lng: 45.079162,
-    size: 1000,
-    color: "white",
-  },
-  {
-    name: "kazakhstan",
-    lat: 48.019573,
-    lng: 66.923684,
-    size: 334,
-    color: "white",
-  },
-];
+// const places = [
+//   { name: "france", lat: 46.227638, lng: 2.213749, hits: 12, color: "white" },
+//   {
+//     name: "spain",
+//     lat: 40.463667,
+//     lng: -3.7492199999999998,
+//     hits: 200,
+//   },
+//   {
+//     name: "saudi arabia",
+//     lat: 23.885942,
+//     lng: 45.079162,
+//     hits: 1,
+//   },
+//   {
+//     name: "kazakhstan",
+//     lat: 48.019573,
+//     lng: 66.923684,
+//     hits: 100,
+//   },
+// ];
 
 interface ContainerSize {
   width: number;
@@ -44,7 +41,7 @@ export const Globe = memo((props: IProps): ReactElement => {
   const theme = useTheme() as TypeAndUserAgent;
   const { isMobile } = theme.userAgent || {};
   const { common: commonSelectors } = selectors;
-  const { current } = useSelector(commonSelectors.usageData);
+  const { current, global } = useSelector(commonSelectors.usageData);
 
   const [containerSize, setContainerSize] = useState<ContainerSize>(
     {} as ContainerSize
@@ -75,7 +72,7 @@ export const Globe = memo((props: IProps): ReactElement => {
       );
     }
   }, [globeEl, isMobile, current.latitude, current.longitude]);
-  console.log(current);
+
   return (
     <Container
       className="globe-container"
@@ -126,8 +123,10 @@ export const Globe = memo((props: IProps): ReactElement => {
           ringColor={() => theme.dsl.palette.tertiary.pink[900]}
           ringRepeatPeriod={700}
           // bars
-          hexBinPointsData={places}
-          hexBinPointWeight="size"
+          // hexBinPointsData={[...global.points, ...places]}
+          hexBinPointsData={global.points}
+          // hexLabel={() => "label"}
+          hexBinPointWeight="hits"
           hexBinResolution={3}
           hexTopColor={() =>
             theme.dsl.hexToRgba(theme.dsl.palette.tertiary.pink[500], 100)
@@ -135,7 +134,13 @@ export const Globe = memo((props: IProps): ReactElement => {
           hexSideColor={(d) =>
             theme.dsl.hexToRgba(theme.dsl.palette.secondary.neon[500], 80)
           }
-          hexAltitude={(d) => d.sumWeight / 2000}
+          hexAltitude={(d) => {
+            const heightRatio = 1 / global.max?.hits;
+            const curr = (d.sumWeight * heightRatio) / 2;
+            const min = Math.max(0.1, curr);
+            const max = Math.min(curr, 1);
+            return Math.min(min, max);
+          }}
           enablePointerInteraction={false}
         />
       ) : (
