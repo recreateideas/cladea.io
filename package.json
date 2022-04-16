@@ -8,6 +8,7 @@
     "deploy:stack": "BRANCH=$(git branch --show-current) && cdk deploy --all --profile website -c branchName=$BRANCH -c environment=dev",
     "describe:stack": "ts-node cdk/scripts/describe-stack.ts website-master-api",
     "destroy:stack": "BRANCH=$(git branch --show-current) && cdk destroy --all --profile website -c branchName=$BRANCH -c environment=dev",
+    "diff:stack": "BRANCH=$(git branch --show-current) && cdk diff --all --profile website -c branchName=$BRANCH -c environment=dev",
     "bootstrap:stack": "BRANCH=$(git branch --show-current) && cdk bootstrap --profile website --require-approval never -c branchName=$BRANCH -c environment=dev",
     "deploy:website": "npm run describe:stack && lerna run deploy:code --scope @cladea.io/website --stream",
     "build": "lerna run build  --scope @cladea.io/website --stream",

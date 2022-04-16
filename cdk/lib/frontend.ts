@@ -1,4 +1,4 @@
-import { StackProps, Stack } from "aws-cdk-lib";
+import { StackProps, Stack, RemovalPolicy } from "aws-cdk-lib";
 import {
   CloudFrontWebDistribution,
   OriginAccessIdentity,
@@ -28,6 +28,7 @@ export default class CladeaWebsite extends Stack {
     // Host static site
     const s3BucketSource = new Bucket(this, "website-bucket", {
       blockPublicAccess: BlockPublicAccess.BLOCK_ALL,
+      removalPolicy: RemovalPolicy.DESTROY,
     });
 
     const originAccessIdentity = new OriginAccessIdentity(

@@ -10,10 +10,11 @@ export class Lambda extends Construct {
 
   constructor(scope: Construct, id: string, props: NodejsFunctionProps) {
     super(scope, id);
-    this.handler = new NodejsFunction(this, "SiteViewsHandler", {
+    this.handler = new NodejsFunction(this, id, {
       runtime: props.runtime || lambda.Runtime.NODEJS_14_X,
       entry: props.entry,
       handler: props.handler || "handler",
+      environment: props.environment,
     });
   }
 }

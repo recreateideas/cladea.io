@@ -10,18 +10,21 @@ export const handler = async function (event: APIGatewayProxyEvent) {
   const { sourceIp, userAgent } = identity;
   const response = await axios.get(`https://ipapi.co/${sourceIp}/json/`);
   console.log({ userAgent, data: response.data });
+  const { postal } = response.data;
   // create AWS SDK clients
-  // const dynamo = new DynamoDB();
-
-  // update dynamo entry for "path" with hits++
-  // await dynamo
-  //   .updateItem({
-  //     TableName: `${process.env.HITS_TABLE_NAME}`,
-  //     Key: { path: { S: event.path } },
-  //     UpdateExpression: "ADD hits :incr",
-  //     ExpressionAttributeValues: { ":incr": { N: "1" } },
-  //   })
-  //   .promise();
+  const dynamo = new DynamoDB();
+  try {
+    await dynamo
+      .updateItem({
+        TableName: `${process.env.TABLE_NAME}`,
+        Key: { pk: { S: `usage#${postal}` } },
+        UpdateExpression: "ADD hits :incr",
+        ExpressionAttributeValues: { ":incr": { N: "1" } },
+      })
+      .promise();
+  } catch (err) {
+    console.log(err);
+  }
 
   return {
     statusCode: 200,

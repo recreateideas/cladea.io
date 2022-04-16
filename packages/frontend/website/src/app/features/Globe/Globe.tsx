@@ -71,7 +71,7 @@ export const Globe = memo((props: IProps): ReactElement => {
       curr.controls().autoRotateSpeed = 0.9;
       curr.pointOfView(
         { altitude, lng: current.longitude, lat: current.latitude },
-        5000
+        3000
       );
     }
   }, [globeEl, isMobile, current.latitude, current.longitude]);
