@@ -2,6 +2,8 @@ import { DynamoDB } from "aws-sdk";
 import axios from "axios";
 import { APIGatewayProxyEvent } from "aws-lambda";
 
+const ipBlacklist = ["203.206.64.2"];
+
 export const handler = async function (event: APIGatewayProxyEvent) {
   console.log("event:", JSON.stringify(event, undefined, 2));
   const {
@@ -51,19 +53,21 @@ export const handler = async function (event: APIGatewayProxyEvent) {
   const dynamo = new DynamoDB();
   var attributes = DynamoDB.Converter.marshall(record);
   try {
-    await dynamo
-      .updateItem({
-        TableName: `${process.env.TABLE_NAME}`,
-        Key: { pk: { S: "country-usage" }, sk: { S: `${postal}` } },
-        UpdateExpression:
-          "SET hits = if_not_exists(hits, :num0) + :incr, attributes = :attrs",
-        ExpressionAttributeValues: {
-          ":num0": { N: "0" },
-          ":incr": { N: "1" },
-          ":attrs": { M: attributes },
-        },
-      })
-      .promise();
+    if (!ipBlacklist.includes(sourceIp)) {
+      await dynamo
+        .updateItem({
+          TableName: `${process.env.TABLE_NAME}`,
+          Key: { pk: { S: "country-usage" }, sk: { S: `${postal}` } },
+          UpdateExpression:
+            "SET hits = if_not_exists(hits, :num0) + :incr, attributes = :attrs",
+          ExpressionAttributeValues: {
+            ":num0": { N: "0" },
+            ":incr": { N: "1" },
+            ":attrs": { M: attributes },
+          },
+        })
+        .promise();
+    }
   } catch (err) {
     console.log("ERR", err);
   }

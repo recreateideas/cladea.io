@@ -135,11 +135,9 @@ export const Globe = memo((props: IProps): ReactElement => {
             theme.dsl.hexToRgba(theme.dsl.palette.secondary.neon[500], 80)
           }
           hexAltitude={(d) => {
-            console.log(d);
             const curr = (d.sumWeight * heightRatio) / 2;
             const min = Math.max(0.1, curr);
             const max = Math.min(curr, 1);
-            console.log({ heightRatio, curr, min, max });
             return Math.min(min, max);
           }}
           enablePointerInteraction={false}
