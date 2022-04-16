@@ -1,5 +1,5 @@
-import { ReactElement, useEffect, useRef, useState } from "react";
-import GlobeComp from "react-globe.gl";
+import { ReactElement, memo, useEffect, useRef, useState } from "react";
+import GlobeCore from "react-globe.gl";
 import { images, TypeAndUserAgent } from "src/app/ui-core";
 import { useTheme } from "styled-components";
 import * as topojson from "topojson-client";
@@ -39,15 +39,12 @@ interface ContainerSize {
   height: number;
 }
 interface IProps {}
-export const Globe = (props: IProps): ReactElement => {
+export const Globe = memo((props: IProps): ReactElement => {
   const globeEl = useRef();
   const theme = useTheme() as TypeAndUserAgent;
   const { isMobile } = theme.userAgent || {};
   const { common: commonSelectors } = selectors;
-  const { current } = useSelector(commonSelectors.usageData) || {
-    current: {},
-    global: {},
-  };
+  const { current } = useSelector(commonSelectors.usageData);
 
   const [containerSize, setContainerSize] = useState<ContainerSize>(
     {} as ContainerSize
@@ -96,7 +93,7 @@ export const Globe = (props: IProps): ReactElement => {
       }}
     >
       {!!current.city ? (
-        <GlobeComp
+        <GlobeCore
           ref={globeEl}
           height={isMobile ? containerSize.width : containerSize.height}
           width={containerSize.width}
@@ -136,7 +133,7 @@ export const Globe = (props: IProps): ReactElement => {
             theme.dsl.hexToRgba(theme.dsl.palette.tertiary.pink[500], 100)
           }
           hexSideColor={(d) =>
-            theme.dsl.hexToRgba(theme.dsl.palette.secondary.neon[500], 100)
+            theme.dsl.hexToRgba(theme.dsl.palette.secondary.neon[500], 80)
           }
           hexAltitude={(d) => d.sumWeight / 2000}
           enablePointerInteraction={false}
@@ -146,8 +143,4 @@ export const Globe = (props: IProps): ReactElement => {
       )}
     </Container>
   );
-};
-
-Globe.displayName = "Globe";
-
-Globe.defaultProps = {};
+});

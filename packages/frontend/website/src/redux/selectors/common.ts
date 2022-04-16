@@ -1,4 +1,5 @@
 import { Selector } from "react-redux";
+import { createSelector } from "reselect";
 import { IReduxStore } from "src/redux";
 
 const getToggle =
@@ -6,6 +7,8 @@ const getToggle =
   (state) =>
     state.appState.common.toggles[toggle];
 
-const usageData = (state: IReduxStore) => state.appState.common.usageData;
+const usage = (state: IReduxStore) => state.appState.common.usageData;
+
+const usageData = createSelector(usage, (d) => d);
 
 export { getToggle, usageData };

@@ -28,7 +28,7 @@ export interface AppState {
     toggles: {
       [toggleName: string]: boolean;
     };
-    usageData?: UsageData;
+    usageData: UsageData;
   };
 
   theme: {
