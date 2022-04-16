@@ -22,13 +22,26 @@ export const handler = async function (event: APIGatewayProxyEvent) {
     utc_offset,
     continent_code,
   } = response.data;
+  let bu_data = {
+    bu_region: "",
+    bu_city: "",
+    bu_latitude: "",
+    bu_longitude: "",
+  };
+  if (!latitude || !longitude) {
+    console.log(`Using backup whois for ip: ${sourceIp}`);
+    const backupRespo = await axios.get(
+      `https://ipwhois.app/json/${sourceIp}\?lang\=en`
+    );
+    bu_data = backupRespo.data;
+  }
   const record = {
-    postal,
+    postal: postal || `${country}-${bu_data.bu_region}-${bu_data.bu_city}`,
     country,
     country_name,
-    city,
-    lat: latitude,
-    lng: longitude,
+    city: city || bu_data.bu_city,
+    lat: latitude || bu_data.bu_latitude,
+    lng: longitude || bu_data.bu_longitude,
     region,
     region_code,
     timezone,
@@ -72,8 +85,8 @@ export const handler = async function (event: APIGatewayProxyEvent) {
     };
     return {
       points: (data.points || []).concat([point]),
-      max: data.max > record.hits ? data.max : point,
-      min: data.min < record.hits ? data.min : point,
+      max: data.max?.hits >= point.hits ? data.max : point,
+      min: data.min?.hits <= point.hits ? data.min : point,
     };
   }, {});
   return {
