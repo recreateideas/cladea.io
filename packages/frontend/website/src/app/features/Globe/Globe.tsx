@@ -2,7 +2,6 @@ import { ReactElement, useEffect, useRef, useState } from "react";
 import GlobeComp from "react-globe.gl";
 import { images, TypeAndUserAgent } from "src/app/ui-core";
 import { useTheme } from "styled-components";
-import * as THREE from "three";
 import * as topojson from "topojson-client";
 import { land110m } from "src/data";
 import { Container } from "./styledComponents";
@@ -43,6 +42,7 @@ interface IProps {}
 export const Globe = (props: IProps): ReactElement => {
   const globeEl = useRef();
   const theme = useTheme() as TypeAndUserAgent;
+  const { isMobile } = theme.userAgent || {};
   const { common: commonSelectors } = selectors;
   const { current } = useSelector(commonSelectors.usageData) || {
     current: {},
@@ -52,10 +52,7 @@ export const Globe = (props: IProps): ReactElement => {
   const [containerSize, setContainerSize] = useState<ContainerSize>(
     {} as ContainerSize
   );
-  const polygonsMaterial = new THREE.MeshLambertMaterial({
-    color: theme.dsl.palette.primary.purple[400],
-    side: THREE.DoubleSide,
-  });
+
   const landPolygons: any = (
     topojson.feature(
       land110m as unknown as Topology,
@@ -70,22 +67,18 @@ export const Globe = (props: IProps): ReactElement => {
 
   useEffect(() => {
     const curr = globeEl.current as any;
-    const altitude = theme.userAgent?.isMobile ? 4 : 3;
-    if (curr) {
-      const coord = curr.getCoords(current.latitude, current.longitude);
-      curr.controls().enablePan = false;
-      curr.controls().touches = { ONE: 2, TWO: 2 };
+    const altitude = isMobile ? 2 : 3;
+    if (curr && current.latitude) {
       curr.controls().enableZoom = false;
       curr.controls().autoRotate = true;
-      curr.controls().autoRotateSpeed = 0.7;
-      curr.controls().object.position.x = coord.x;
-      curr.controls().object.position.y = coord.y;
-      curr.controls().object.position.z = coord.z;
-      console.log(curr.controls().object.position);
-      curr.pointOfView({ altitude }, 5000);
+      curr.controls().autoRotateSpeed = 0.9;
+      curr.pointOfView(
+        { altitude, lng: current.longitude, lat: current.latitude },
+        5000
+      );
     }
-  }, [globeEl, theme.userAgent?.isMobile, current.latitude, current.longitude]);
-
+  }, [globeEl, isMobile, current.latitude, current.longitude]);
+  console.log(current);
   return (
     <Container
       className="globe-container"
@@ -102,40 +95,55 @@ export const Globe = (props: IProps): ReactElement => {
         }
       }}
     >
-      <GlobeComp
-        ref={globeEl}
-        height={containerSize.height}
-        width={containerSize.width}
-        globeImageUrl={images.plainDeepBlue}
-        backgroundColor="rgba(0,0,0,0)"
-        showGlobe={true}
-        showAtmosphere={false}
-        polygonsData={landPolygons}
-        polygonCapMaterial={polygonsMaterial}
-        polygonSideColor={() =>
-          theme.dsl.hexToRgba(theme.dsl.palette.secondary.neon[500], 5)
-        }
-        // rings
-        ringAltitude={0.02}
-        ringsData={[originRing]}
-        ringResolution={256}
-        ringMaxRadius={10}
-        ringPropagationSpeed={7}
-        ringColor={() => theme.dsl.palette.tertiary.pink[900]}
-        ringRepeatPeriod={700}
-        // bars
-        hexBinPointsData={places}
-        hexBinPointWeight="size"
-        hexBinResolution={3}
-        hexTopColor={() =>
-          theme.dsl.hexToRgba(theme.dsl.palette.tertiary.pink[500], 100)
-        }
-        hexSideColor={(d) =>
-          theme.dsl.hexToRgba(theme.dsl.palette.secondary.neon[500], 100)
-        }
-        hexAltitude={(d) => d.sumWeight / 2000}
-        enablePointerInteraction={false}
-      />
+      {!!current.city ? (
+        <GlobeComp
+          ref={globeEl}
+          height={isMobile ? containerSize.width : containerSize.height}
+          width={containerSize.width}
+          globeImageUrl={images.plainDeepBlue}
+          backgroundColor="rgba(0,0,0,0)"
+          showGlobe={true}
+          showAtmosphere={true}
+          showGraticules={false}
+          atmosphereAltitude={0.15}
+          atmosphereColor={theme.dsl.palette.tertiary.blue[500]}
+          polygonsData={landPolygons}
+          polygonCapColor={() => theme.dsl.palette.primary.purple[400]}
+          polygonSideColor={() =>
+            theme.dsl.hexToRgba(theme.dsl.palette.secondary.neon[500], 5)
+          }
+          // label
+          labelsData={[originRing]}
+          labelLabel={() => "You"}
+          labelText={() => "You"}
+          labelAltitude={0.02}
+          labelSize={isMobile ? 3 : 2}
+          labelDotRadius={1}
+          labelColor={() => theme.dsl.palette.tertiary.pink[900]}
+          // rings
+          ringAltitude={0.02}
+          ringsData={[originRing]}
+          ringResolution={256}
+          ringMaxRadius={10}
+          ringPropagationSpeed={7}
+          ringColor={() => theme.dsl.palette.tertiary.pink[900]}
+          ringRepeatPeriod={700}
+          // bars
+          hexBinPointsData={places}
+          hexBinPointWeight="size"
+          hexBinResolution={3}
+          hexTopColor={() =>
+            theme.dsl.hexToRgba(theme.dsl.palette.tertiary.pink[500], 100)
+          }
+          hexSideColor={(d) =>
+            theme.dsl.hexToRgba(theme.dsl.palette.secondary.neon[500], 100)
+          }
+          hexAltitude={(d) => d.sumWeight / 2000}
+          enablePointerInteraction={false}
+        />
+      ) : (
+        <div />
+      )}
     </Container>
   );
 };

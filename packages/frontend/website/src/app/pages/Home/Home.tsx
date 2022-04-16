@@ -1,4 +1,4 @@
-import { Globe } from "src/app/ui-core";
+import { Globe } from "src/app/features";
 import { Space } from "src/app/ui-core";
 import { Container } from "./styledComponents";
 
