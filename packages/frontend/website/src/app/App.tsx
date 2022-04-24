@@ -1,18 +1,25 @@
 import { ReactElement, useEffect } from "react";
 import { ConnectedRouter as Router } from "connected-react-router";
 import { Switch, Redirect, Route } from "react-router-dom";
+import { useTheme } from "styled-components";
 import { history } from "../redux";
 import { routes } from "../routes";
 import {
   ErrorBoundary,
   AuthenticatedRoute,
-  Sidebar,
   Tracker,
+  MainHeader,
+  MainFooter,
 } from "./features";
 import { actions, useDispatch } from "src/redux";
 
+import { ThemeAndUserAgent } from "./ui-core";
+import { PageContainer } from "./styledComponents";
+
 export const App = (): ReactElement => {
   const dispatch = useDispatch();
+  const theme = useTheme() as ThemeAndUserAgent;
+  const { isMobile } = theme.userAgent || {};
   const {
     common: { setIsDev },
   } = actions;
@@ -39,16 +46,14 @@ export const App = (): ReactElement => {
                 path={path}
                 title={title}
                 render={(props) => (
-                  //     <PageContainer>
-                  //         <Header title={title} />
-                  //         <PageContent className="page-content">
                   <>
                     <Tracker />
-                    <Sidebar />
-                    <Component {...props} />
+                    <PageContainer>
+                      {!isMobile && <MainHeader />}
+                      <Component {...props} />
+                      {isMobile && <MainFooter />}
+                    </PageContainer>
                   </>
-                  //         </PageContent>
-                  //     </PageContainer>
                 )}
               />
             );

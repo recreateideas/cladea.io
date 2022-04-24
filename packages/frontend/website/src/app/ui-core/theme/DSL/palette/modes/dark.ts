@@ -12,7 +12,7 @@ export const neutrals: Palette["neutrals"] = {
   borders: "#373946",
   primaryBg,
   primaryBg70: hexToRgba(primaryBg, 70),
-  secondaryBg: "#23252b",
+  secondaryBg: "#212529",
   tertiaryBg: "#1f2229",
   quaternaryBg: "#34224D",
   boxShadow: (color = lightPrimaryBg) =>

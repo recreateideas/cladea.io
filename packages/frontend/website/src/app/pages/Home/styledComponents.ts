@@ -8,11 +8,12 @@ export const Container = styled.div`
       },
     } = props;
     return css`
+      position: relative;
       box-sizing: border-box;
       height: 100%;
       width: 100%;
       display: flex;
-      overflow: auto;
+      overflow: hidden;
       .globe-container {
         width: 100%;
         display: flex;

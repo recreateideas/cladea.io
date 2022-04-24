@@ -5,3 +5,5 @@ export * from "./Sidebar";
 export * from "./WorldMap";
 export * from "./Tracker";
 export * from "./Globe";
+export * from "./MainHeader";
+export * from "./MainFooter";

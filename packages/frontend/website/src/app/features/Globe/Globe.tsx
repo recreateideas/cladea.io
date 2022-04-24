@@ -1,6 +1,6 @@
 import { ReactElement, memo, useEffect, useRef, useState } from "react";
 import GlobeCore from "react-globe.gl";
-import { images, TypeAndUserAgent } from "src/app/ui-core";
+import { images, ThemeAndUserAgent } from "src/app/ui-core";
 import { useTheme } from "styled-components";
 import * as topojson from "topojson-client";
 import { land110m } from "src/data";
@@ -38,7 +38,7 @@ interface ContainerSize {
 interface IProps {}
 export const Globe = memo((props: IProps): ReactElement => {
   const globeEl = useRef();
-  const theme = useTheme() as TypeAndUserAgent;
+  const theme = useTheme() as ThemeAndUserAgent;
   const { isMobile } = theme.userAgent || {};
   const { common: commonSelectors } = selectors;
   const { current, global } = useSelector(commonSelectors.usageData);

@@ -111,6 +111,6 @@ export interface Theme {
   muiTheme: any;
 }
 
-export type TypeAndUserAgent = Theme & { userAgent: UserAgent };
+export type ThemeAndUserAgent = Theme & { userAgent: UserAgent };
 
 export type CustomCss = Array<any> | { [cssProp: string]: string | number };
