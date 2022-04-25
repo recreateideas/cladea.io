@@ -2,6 +2,7 @@ import { ReactNode, useState, ReactElement } from "react";
 import { IconButton } from "src/app/ui-core";
 import { ChevronRight, ChevronLeft } from "@mui/icons-material";
 import { Container, Content, Handle } from "./styledComponents";
+import { ClickOutside } from "src/hooks";
 
 interface IProps {
   children: ReactNode;
@@ -25,8 +26,11 @@ export const Sidebar = (props: IProps): ReactElement => {
   return (
     <Container className="sidebar" {...{ type, width, from }}>
       <Content className="sidebar-content" {...{ isOpen, width, from }}>
-        <div>{children}</div>
+        <ClickOutside callback={setIsOpen.bind(null, false)}>
+          <div>{children}</div>
+        </ClickOutside>
       </Content>
+
       <Handle className="sidebar-handle" {...{ onClick: onToggle }}>
         <IconButton color="secondary">
           {isOpen ? closeIcon : openIcon}
