@@ -1,13 +1,13 @@
-import { Sidebar } from "./Sidebar";
+import { SidebarMenu } from "./SidebarMenu";
 import { TestProvider } from "src/tests";
 
 const { mountWithProviderAndTheme } = TestProvider();
-describe("<Sidebar/>", () => {
+describe("<SidebarMenu/>", () => {
   it("should render", () => {
     const state = {
       common: {},
     };
-    const root = mountWithProviderAndTheme(<Sidebar />, state);
+    const root = mountWithProviderAndTheme(<SidebarMenu />, state);
     expect(root).toMatchSnapshot();
   });
 });

@@ -6,7 +6,6 @@ import { useTheme } from "styled-components";
 import { ThemeAndUserAgent } from "src/app/ui-core";
 import { actions, useDispatch } from "src/redux";
 import { Container } from "./styledComponents";
-import { DropdownButton, NavDropdown } from "react-bootstrap";
 
 interface IProps {}
 export const MainFooter = (props: IProps): ReactElement => {
