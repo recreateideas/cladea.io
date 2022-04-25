@@ -15,8 +15,8 @@ export const Container = styled.div`
     return css`
       background: linear-gradient(
           217deg,
-          ${palette.primary.darkIndigo[950]},
-          rgba(0, 0, 0, 0) 70.71%
+          ${palette.primary.darkIndigo[900]},
+          rgba(0, 0, 0, 0) 50.71%
         ),
         linear-gradient(
           127deg,
@@ -25,8 +25,8 @@ export const Container = styled.div`
         ),
         linear-gradient(
           336deg,
-          ${palette.primary.darkIndigo[850]},
-          rgba(0, 0, 0, 0) 70.71%
+          ${palette.primary.darkIndigo[800]},
+          rgba(0, 0, 0, 0) 50.71%
         );
     `;
   }}

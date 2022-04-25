@@ -9,7 +9,7 @@ import {
   AuthenticatedRoute,
   Tracker,
   MainHeader,
-  MainFooter,
+  Sidebar,
 } from "./features";
 import { actions, useDispatch } from "src/redux";
 
@@ -49,9 +49,8 @@ export const App = (): ReactElement => {
                   <>
                     <Tracker />
                     <PageContainer>
-                      {!isMobile && <MainHeader />}
+                      {!isMobile ? <MainHeader /> : <Sidebar>Menu</Sidebar>}
                       <Component {...props} />
-                      {isMobile && <MainFooter />}
                     </PageContainer>
                   </>
                 )}
