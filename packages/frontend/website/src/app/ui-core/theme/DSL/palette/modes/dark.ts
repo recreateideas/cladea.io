@@ -16,7 +16,7 @@ export const neutrals: Palette["neutrals"] = {
   tertiaryBg: "#1f2229",
   quaternaryBg: "#171a21",
   boxShadow: (color = lightPrimaryBg) =>
-    `${getAlpha(color, "5%")} 0px 8px 20px 0px`,
+    `${getAlpha(color, "5%")} 0px 4px 20px 0px`,
 };
 
 export const fonts: Palette["fonts"] = {

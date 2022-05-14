@@ -22,6 +22,7 @@ export const roles = [
     companyName: "Enboarder",
     description: "",
     icon: "",
+    promotion: true,
   },
   {
     start: "Nov 2019",

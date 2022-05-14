@@ -1,23 +1,23 @@
-import { ReactElement } from "react";
+import { ReactElement, useState } from "react";
 import {
   Timeline as TimelineCore,
   TimelineConnector,
   TimelineContent,
   TimelineDot,
-  TimelineItem,
   TimelineOppositeContent,
   TimelineSeparator,
 } from "@mui/lab";
-import { Container } from "./styledComponents";
 import { Fastfood } from "@mui/icons-material";
-import { roles } from "./roles";
 import { useTheme } from "styled-components";
+import { Container, Role } from "./styledComponents";
 import { ThemeAndUserAgent } from "src/app/ui-core";
 import { useBreakpoints } from "src/hooks";
+import { roles } from "./roles";
 
 interface IProps {}
 export const CareerTimeline = (props: IProps): ReactElement => {
   const theme = useTheme() as ThemeAndUserAgent;
+  const [activeItemIndex, setActiveItemIndex] = useState<number | undefined>();
   const breakpoint = useBreakpoints();
   const { isMobile } = theme.userAgent || {};
   return (
@@ -26,23 +26,45 @@ export const CareerTimeline = (props: IProps): ReactElement => {
         {roles.map((role, i) => {
           const isFirst = i === 0;
           const isLast = i === roles.length - 1;
+          const isBeforePromotion = roles[i - 1]?.promotion;
+          const isActive = activeItemIndex === i;
           return (
-            <TimelineItem key={i}>
+            <Role
+              key={i}
+              className="role"
+              breakpoint={breakpoint}
+              isPromotion={role.promotion}
+              isBeforePromotion={isBeforePromotion}
+              isActive={isActive}
+              onClick={setActiveItemIndex.bind(null, i)}
+              onMouseEnter={setActiveItemIndex.bind(null, i)}
+              onMouseLeave={setActiveItemIndex.bind(null, undefined)}
+            >
               <TimelineOppositeContent className="date-container">
                 <div className="date">
-                  <span className="start">{role.start}</span>
-                  {isMobile && <br />}
-                  <span className="iphen">&nbsp;-&nbsp;</span>
-                  {isMobile && <br />}
-                  <span className="end">{role.end}</span>
+                  {isMobile ? (
+                    <>
+                      <span className="start">{role.end}</span>
+                      <br />
+                      <span className="iphen">&nbsp;-&nbsp;</span>
+                      <br />
+                      <span className="end">{role.start}</span>
+                    </>
+                  ) : (
+                    <>
+                      <span className="start">{role.start}</span>
+                      <span className="iphen">&nbsp;-&nbsp;</span>
+                      <span className="end">{role.end}</span>
+                    </>
+                  )}
                 </div>
               </TimelineOppositeContent>
               <TimelineSeparator>
-                {!isFirst && <TimelineConnector className="connector" />}
+                {!isFirst && <TimelineConnector className="connector top" />}
                 <TimelineDot>
                   <Fastfood />
                 </TimelineDot>
-                {!isLast && <TimelineConnector className="connector" />}
+                {!isLast && <TimelineConnector className="connector bottom" />}
               </TimelineSeparator>
               <TimelineContent
                 sx={{ py: "12px", px: 2 }}
@@ -53,7 +75,7 @@ export const CareerTimeline = (props: IProps): ReactElement => {
                   <div className="header-bottom">{role.companyName}</div>
                 </div>
               </TimelineContent>
-            </TimelineItem>
+            </Role>
           );
         })}
       </TimelineCore>

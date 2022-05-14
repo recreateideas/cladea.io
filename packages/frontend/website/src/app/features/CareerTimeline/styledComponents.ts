@@ -1,14 +1,11 @@
+import { TimelineItem } from "@mui/lab";
 import styled, { css } from "styled-components";
+
+const gap = "4px";
 
 export const Container = styled.div<{ breakpoint: string }>`
   ${(props) => {
-    const {
-      theme: {
-        dsl: { typography, palette },
-      },
-      breakpoint,
-    } = props;
-    const gap = "4px";
+    const { breakpoint } = props;
     return css`
       .timeline {
         padding: 8px ${breakpoint === "sm" ? "0px" : "16px"}; 0 0;
@@ -37,6 +34,28 @@ export const Container = styled.div<{ breakpoint: string }>`
           top: calc(${gap} * 3);
         }
       }
+    `;
+  }}
+`;
+
+export const Role = styled(TimelineItem)<{
+  breakpoint: string;
+  isPromotion?: boolean;
+  isBeforePromotion?: boolean;
+  isActive?: boolean;
+}>`
+  ${(props) => {
+    const {
+      theme: {
+        dsl: { typography, palette },
+      },
+      breakpoint,
+      isPromotion,
+      isBeforePromotion,
+      isActive,
+    } = props;
+    return css`
+      cursor: pointer;
       .date-container {
         flex: 0;
         margin: auto 0;
@@ -59,16 +78,53 @@ export const Container = styled.div<{ breakpoint: string }>`
           margin: ${gap};
           padding: 8px;
           background-color: ${palette.neutrals.quaternaryBg};
+          ${isActive &&
+          css`
+            box-shadow: ${palette.neutrals.boxShadow()};
+          `};
         }
       }
       .header-top {
         font-weight: 600;
+        margin-bottom: 4px;
       }
       .header-bottom {
         color: ${palette.secondary.neon[900]};
       }
       .connector {
         background-color: ${palette.tertiary.pink[500]};
+        position: relative;
+        ${isPromotion &&
+        css`
+          &.bottom:after {
+            content: "";
+            position: absolute;
+            transform: translateX(calc(-50% + 1px)) translateY(-8px);
+            background-color: ${palette.tertiary.pink[500]};
+            border: solid 3px ${palette.neutrals.secondaryBg};
+            box-sizing: border-box;
+            width: 13px;
+            height: 13px;
+            border-radius: 100%;
+            z-index: 0;
+          }
+        `}
+        ${isBeforePromotion &&
+        css`
+          &.top:after {
+            content: "";
+            position: absolute;
+            transform: translateX(calc(-50% + 1px)) translateY(+8px);
+            background-color: ${palette.tertiary.pink[500]};
+            border: solid 3px ${palette.neutrals.secondaryBg};
+            box-sizing: border-box;
+            width: 13px;
+            height: 13px;
+            border-radius: 100%;
+            z-index: 0;
+            bottom: 0;
+          }
+        `}
       }
     `;
   }}
