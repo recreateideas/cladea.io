@@ -3,7 +3,7 @@ import { Navbar } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
 import { StyledLink } from "src/app/ui-core";
 import { logo } from "src/app/ui-core/images";
-import { useMargin } from "src/hooks";
+import { useMargin } from "src/common/hooks";
 import { routes } from "src/routes";
 import { Container } from "./styledComponents";
 

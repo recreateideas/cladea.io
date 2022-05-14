@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components";
 
+const headerHeight = "14vh";
 export const Container = styled.div.attrs({
   className: "page-structure",
 })<{
@@ -27,11 +28,11 @@ export const Container = styled.div.attrs({
       margin: 0 ${margin}px;
       ${hasBodyYScrolled2 &&
       css`
-        height: calc(100% + 14vh);
+        height: calc(100% + ${headerHeight});
       `}
       .header {
         position: relative;
-        min-height: 14vh;
+        min-height: ${headerHeight};
         top: 0px;
         background-color: ${palette.neutrals.tertiaryBg};
         display: flex;
@@ -40,7 +41,7 @@ export const Container = styled.div.attrs({
         transition: all 0.3s;
         ${hasBodyYScrolled2 &&
         css`
-          top: -14vh;
+          top: -${headerHeight};
         `}
         .header-content {
           position: relative;
@@ -89,9 +90,9 @@ export const Container = styled.div.attrs({
         top: 0px;
         ${hasBodyYScrolled2 &&
         css`
-          top: -14vh;
-          padding-top: 14vh;
-          height: calc(100% - 14vh);
+          top: -${`${parseInt(headerHeight) - 2}vh`};
+          padding-top: ${headerHeight};
+          height: calc(100% - ${headerHeight});
         `}
         .body-main-content {
           flex-direction: column;

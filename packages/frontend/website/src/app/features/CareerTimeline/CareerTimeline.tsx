@@ -11,7 +11,7 @@ import { Fastfood } from "@mui/icons-material";
 import { useTheme } from "styled-components";
 import { Container, Role } from "./styledComponents";
 import { ThemeAndUserAgent } from "src/app/ui-core";
-import { useBreakpoints } from "src/hooks";
+import { useBreakpoints } from "src/common/hooks";
 import { roles } from "./roles";
 
 interface IProps {}

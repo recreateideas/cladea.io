@@ -2,7 +2,7 @@ import { ReactNode, useState, ReactElement } from "react";
 import { IconButton } from "src/app/ui-core";
 import { ChevronRight, ChevronLeft } from "@mui/icons-material";
 import { Container, Content, Handle } from "./styledComponents";
-import { ClickOutside } from "src/hooks";
+import { ClickOutside } from "src/common/hooks";
 
 interface IProps {
   children: ReactNode;

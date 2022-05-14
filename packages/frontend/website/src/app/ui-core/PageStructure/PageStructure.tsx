@@ -1,5 +1,5 @@
 import { ReactElement, useLayoutEffect, useRef, useState } from "react";
-import { useScrollY, useMargin, useBreakpoints } from "src/hooks";
+import { useScrollY, useMargin, useBreakpoints } from "src/common/hooks";
 import { Container } from "./styledComponents";
 
 interface IProps {
