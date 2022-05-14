@@ -31,6 +31,7 @@ export const App = (): ReactElement => {
   return (
     <ErrorBoundary>
       <Router {...{ history }}>
+        {!isMobile ? <MainHeader /> : <SidebarMenu />}
         <Switch>
           {routes.map((routeObj, i) => {
             const {
@@ -49,7 +50,6 @@ export const App = (): ReactElement => {
                   <>
                     <Tracker />
                     <PageContainer>
-                      {!isMobile ? <MainHeader /> : <SidebarMenu />}
                       <Component {...props} />
                     </PageContainer>
                   </>

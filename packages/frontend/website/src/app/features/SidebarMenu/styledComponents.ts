@@ -18,6 +18,12 @@ export const Container = styled(ContainerBS)`
         justify-content: center;
         border-bottom: solid 2px ${palette.neutrals.borders};
       }
+      .navigation {
+        margin-top: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
     `;
   }}
 `;

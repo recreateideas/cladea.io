@@ -9,7 +9,6 @@ import { Container } from "./styledComponents";
 interface IProps {}
 export const MainHeader = (props: IProps): ReactElement => {
   const { pathname } = useLocation();
-
   return (
     <Container className="main-header">
       <Navbar className="navbar" bg="dark" variant="dark">
@@ -25,7 +24,6 @@ export const MainHeader = (props: IProps): ReactElement => {
             <div className="nav-brand">cladea.io</div>
           </StyledLink>
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <div className="navigation">
           {routes.map((route, i) => {
             const isActive = pathname === route.path;
