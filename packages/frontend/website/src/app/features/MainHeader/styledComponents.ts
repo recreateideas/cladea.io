@@ -26,7 +26,7 @@ export const Container = styled(ContainerBS)<{ margin: number }>`
           display: flex;
           justify-content: center;
           flex-direction: column;
-          margin-right: 8px;
+          margin-right: 24px;
         }
         .navigation {
           display: flex;

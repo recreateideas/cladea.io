@@ -48,6 +48,7 @@
     "aws-cdk-lib": "^2.20.0",
     "constructs": "^10.0.109",
     "dotenv": "^16.0.0",
+    "esbuild": "^0.14.39",
     "lerna": "^4.0.0",
     "typescript": "^4.6.3"
   }

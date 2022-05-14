@@ -1,3 +1,4 @@
+import { Duration } from "aws-cdk-lib";
 import * as lambda from "aws-cdk-lib/aws-lambda";
 import {
   NodejsFunction,
@@ -14,6 +15,7 @@ export class Lambda extends Construct {
       runtime: props.runtime || lambda.Runtime.NODEJS_14_X,
       entry: props.entry,
       handler: props.handler || "handler",
+      timeout: Duration.seconds(30),
       environment: props.environment,
     });
   }
