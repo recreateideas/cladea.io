@@ -1,12 +1,13 @@
 import styled, { css } from "styled-components";
 import { Container as ContainerBS } from "react-bootstrap";
 
-export const Container = styled(ContainerBS)`
+export const Container = styled(ContainerBS)<{ margin: number }>`
   ${(props) => {
     const {
       theme: {
         dsl: { layout, palette },
       },
+      margin,
     } = props;
     return css`
       max-width: unset !important;
@@ -15,7 +16,7 @@ export const Container = styled(ContainerBS)`
       border-bottom: solid 1px ${palette.neutrals.borders};
       position: relative;
       .navbar {
-        padding: 8px;
+        padding: 8px ${margin}px;
         background-color: ${palette.neutrals.secondaryBg};
         .brand-link {
           display: flex;
@@ -25,11 +26,12 @@ export const Container = styled(ContainerBS)`
           display: flex;
           justify-content: center;
           flex-direction: column;
+          margin-right: 8px;
         }
         .navigation {
           display: flex;
-          gap: 16px;
           width: 100%;
+          gap: 32px;
         }
       }
     `;

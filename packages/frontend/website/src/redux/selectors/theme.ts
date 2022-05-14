@@ -1,12 +1,16 @@
 import { Selector } from "react-redux";
-import { IReduxStore, UserAgent } from "src/redux";
+import { IReduxStore, UserAgent, Breakpoints, Margins } from "src/redux";
 import { ThemeMode } from "src/app/ui-core";
 
-const mode: Selector<IReduxStore, ThemeMode> = (state) =>
+export const mode: Selector<IReduxStore, ThemeMode> = (state) =>
   state.appState.theme.mode;
-const isDarkMode: Selector<IReduxStore, boolean> = (state) =>
+export const isDarkMode: Selector<IReduxStore, boolean> = (state) =>
   state.appState.theme.mode === "dark";
-const userAgent: Selector<IReduxStore, UserAgent | undefined> = (state) =>
-  state.appState.theme.userAgent;
-
-export { mode, isDarkMode, userAgent };
+export const userAgent: Selector<IReduxStore, UserAgent | undefined> = (
+  state
+) => state.appState.theme.userAgent;
+export const breakpoints: Selector<IReduxStore, Breakpoints | undefined> = (
+  state
+) => state.appState.theme.breakpoints;
+export const margins: Selector<IReduxStore, Margins | undefined> = (state) =>
+  state.appState.theme.margins;

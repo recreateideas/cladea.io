@@ -1,11 +1,12 @@
 import styled, { css } from "styled-components";
 
-export const Container = styled.div`
+export const Container = styled.div<{ breakpoint: string }>`
   ${(props) => {
     const {
       theme: {
         dsl: { typography, palette },
       },
+      breakpoint,
     } = props;
     const gap = "4px";
     return css`
@@ -39,7 +40,7 @@ export const Container = styled.div`
       .date-container {
         flex: 0;
         margin: auto 0;
-        min-width: 16vw;
+        min-width: ${breakpoint === "sm" ? "14vw" : "9vw"};
         max-width: 100px;
         text-align: right;
         padding-left: 0;

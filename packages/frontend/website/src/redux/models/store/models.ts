@@ -23,6 +23,14 @@ export interface UsageData {
     [toggleName: string]: boolean;
   };
 }
+
+export type Breakpoints = {
+  [key: string]: number;
+};
+
+export type Margins = {
+  [key: string]: number;
+};
 export interface AppState {
   common: {
     toggles: {
@@ -34,6 +42,8 @@ export interface AppState {
   theme: {
     mode: ThemeMode;
     userAgent?: UserAgent;
+    breakpoints?: Breakpoints;
+    margins?: Margins;
   };
 }
 export interface IReduxStore extends Store {

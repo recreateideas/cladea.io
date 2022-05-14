@@ -1,5 +1,5 @@
 import { ReactElement, useLayoutEffect, useRef, useState } from "react";
-import { useScrollY } from "src/hooks";
+import { useScrollY, useMargin } from "src/hooks";
 import { Container } from "./styledComponents";
 
 interface IProps {
@@ -10,6 +10,7 @@ export const PageStructure = (props: IProps): ReactElement => {
   const ref = useRef(null);
   const [bodyEl, setBodyEl] = useState<HTMLElement | null>(null);
   const thresholds = [16, 128];
+  const margin = useMargin();
   const { hasYScrolled1, hasYScrolled2, onScroll } = useScrollY(
     bodyEl,
     thresholds
@@ -29,10 +30,10 @@ export const PageStructure = (props: IProps): ReactElement => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [!!bodyEl, !!onScroll]);
-
   return (
     <Container
       ref={ref}
+      margin={margin}
       hasBodyYScrolled1={hasYScrolled1}
       hasBodyYScrolled2={hasYScrolled2}
     >

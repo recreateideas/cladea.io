@@ -2,12 +2,17 @@ import styled, { css } from "styled-components";
 
 export const Container = styled.div.attrs({
   className: "page-structure",
-})<{ hasBodyYScrolled1?: boolean; hasBodyYScrolled2?: boolean }>`
+})<{
+  margin: number;
+  hasBodyYScrolled1?: boolean;
+  hasBodyYScrolled2?: boolean;
+}>`
   ${(props) => {
     const {
       theme: {
         dsl: { typography, palette },
       },
+      margin,
       hasBodyYScrolled1,
       hasBodyYScrolled2,
     } = props;
@@ -17,6 +22,7 @@ export const Container = styled.div.attrs({
       display: flex;
       flex-direction: column;
       box-sizing: border-box;
+      margin: 0 ${margin}px;
       ${hasBodyYScrolled2 &&
       css`
         height: calc(100% + 14vh);
@@ -45,6 +51,7 @@ export const Container = styled.div.attrs({
           !hasBodyYScrolled2 &&
           css`
             box-shadow: 0px 5px 20px -7px ${palette.neutrals.borders};
+            clip-path: inset(0px 0px -25px 0px);
           `}
           .header-title {
             width: 100%;

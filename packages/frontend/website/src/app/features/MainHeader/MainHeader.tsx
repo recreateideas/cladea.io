@@ -3,14 +3,16 @@ import { Navbar } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
 import { StyledLink } from "src/app/ui-core";
 import { logo } from "src/app/ui-core/images";
+import { useMargin } from "src/hooks";
 import { routes } from "src/routes";
 import { Container } from "./styledComponents";
 
 interface IProps {}
 export const MainHeader = (props: IProps): ReactElement => {
   const { pathname } = useLocation();
+  const margin = useMargin();
   return (
-    <Container className="main-header">
+    <Container className="main-header" margin={margin}>
       <Navbar className="navbar">
         <Navbar.Brand>
           <StyledLink linkClassName="brand-link" to="/">

@@ -13,13 +13,15 @@ import { Fastfood } from "@mui/icons-material";
 import { roles } from "./roles";
 import { useTheme } from "styled-components";
 import { ThemeAndUserAgent } from "src/app/ui-core";
+import { useBreakpoints } from "src/hooks";
 
 interface IProps {}
 export const CareerTimeline = (props: IProps): ReactElement => {
   const theme = useTheme() as ThemeAndUserAgent;
+  const breakpoint = useBreakpoints();
   const { isMobile } = theme.userAgent || {};
   return (
-    <Container className="timeline">
+    <Container className="timeline" breakpoint={breakpoint}>
       <TimelineCore position="right" className="timeline">
         {roles.map((role, i) => {
           const isFirst = i === 0;
