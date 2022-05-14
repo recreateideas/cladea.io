@@ -40,12 +40,12 @@ export const Container = styled.div<{ breakpoint: string }>`
       .date-container {
         flex: 0;
         margin: auto 0;
-        min-width: ${breakpoint === "sm" ? "14vw" : "9vw"};
+        min-width: ${breakpoint === "sm" ? "14vw" : "10vw"};
         max-width: 100px;
         text-align: right;
         padding-left: 0;
         padding-right: 0;
-        margin-right: 8px;
+        margin-right: ${breakpoint === "sm" ? "8px" : "16px"};
         .date {
           ${typography.typefaces.label({ color: "secondary" })}
           white-space: nowrap;

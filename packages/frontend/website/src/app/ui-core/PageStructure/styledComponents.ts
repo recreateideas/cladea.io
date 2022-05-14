@@ -4,6 +4,7 @@ export const Container = styled.div.attrs({
   className: "page-structure",
 })<{
   margin: number;
+  breakpoint: string;
   hasBodyYScrolled1?: boolean;
   hasBodyYScrolled2?: boolean;
 }>`
@@ -13,6 +14,7 @@ export const Container = styled.div.attrs({
         dsl: { typography, palette },
       },
       margin,
+      breakpoint,
       hasBodyYScrolled1,
       hasBodyYScrolled2,
     } = props;
@@ -77,7 +79,7 @@ export const Container = styled.div.attrs({
       .body {
         position: relative;
         height: 100%;
-        padding: 2vh 5vw;
+        padding: 2vh ${breakpoint === "sm" ? "5vw" : "0"};
         padding-bottom: 5vh;
         box-sizing: border-box;
         display: flex;
