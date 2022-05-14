@@ -9,7 +9,7 @@ export const PageStructure = (props: IProps): ReactElement => {
   const { children } = props;
   const ref = useRef(null);
   const [bodyEl, setBodyEl] = useState<HTMLElement | null>(null);
-  const thresholds = [16, 128];
+  const thresholds = [16, 100];
   const breakpoint = useBreakpoints();
   const margin = useMargin();
   const { hasYScrolled1, hasYScrolled2, onScroll } = useScrollY(

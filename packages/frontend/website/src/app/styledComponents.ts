@@ -7,4 +7,5 @@ export const PageContainer = styled.div.attrs({ id: "page-container" })`
   position: relative;
   width: 100%;
   height: 100%;
+  overflow: hidden;
 `;
