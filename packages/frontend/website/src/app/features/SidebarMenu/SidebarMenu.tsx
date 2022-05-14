@@ -22,13 +22,12 @@ export const SidebarMenu = (props: IProps): ReactElement => {
               width="80"
               height="80"
               className="d-inline-block align-top"
-            />{" "}
+            />
           </StyledLink>
         </div>
         <div className="navigation">
           {routes.map((route, i) => {
             const isActive = pathname === route.path;
-            isActive && console.log(route.path, pathname);
             return (
               <StyledLink key={i} to={route.path} isActive={isActive}>
                 {route.title}

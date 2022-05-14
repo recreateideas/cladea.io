@@ -5,6 +5,7 @@ export const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
   html, body, #root {
     height: 100%;
     width: 100%;
+    display: flex;
     flex-direction: column;
     overflow: hidden;
     ${(props) => props.theme.dsl.css}
@@ -15,9 +16,6 @@ export const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
     -moz-osx-font-smoothing: grayscale;
     padding: 0;
     margin: 0;
-  }
-  #root {
-    display: flex;
   }
   .is-draggable:hover {
     cursor: grab !important;

@@ -86,8 +86,10 @@ export interface ThemeFont extends FontSize {
 export type ThemeFontType = (args: ThemeFontOptions) => ThemeFont;
 
 export interface ThemeFontTypes {
+  h0: ThemeFontType;
   h1: ThemeFontType;
   h2: ThemeFontType;
+  h3: ThemeFontType;
   p: ThemeFontType;
   subHeading: ThemeFontType;
   label: ThemeFontType;

@@ -1,21 +1,26 @@
 import { ReactElement } from "react";
-import { Timeline } from "src/app/ui-core";
-import { PageStructure } from "../styledComponents";
+import { CareerTimeline } from "src/app/features";
+import { PageStructure } from "src/app/ui-core";
 import { Container } from "./styledComponents";
 
-interface IProps {}
+interface IProps {
+  route: any;
+}
 export const Career = (props: IProps): ReactElement => {
+  const {
+    route: { title },
+  } = props;
   return (
     <Container id="career-page">
       <PageStructure>
-        <div className="header">Header</div>
-        <div className="body">
-          <div className="career-timeline">
-            <Timeline />
+        <div className="header">
+          <div className="header-content">
+            <div className="header-title">{title}</div>
           </div>
+        </div>
+        <div className="body">
           <div className="body-main-content">
-            <div className="section"></div>
-            <div className="section"></div>
+            <CareerTimeline />
           </div>
         </div>
         <div className="footer"></div>

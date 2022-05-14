@@ -15,17 +15,17 @@ export const Container = styled.div`
     return css`
       background: linear-gradient(
           217deg,
-          ${palette.primary.darkIndigo[900]},
+          ${palette.neutrals.primaryBg},
           rgba(0, 0, 0, 0) 50.71%
         ),
         linear-gradient(
           127deg,
-          ${palette.primary.darkIndigo[950]},
+          ${palette.neutrals.ternaryBg},
           rgba(0, 0, 0, 0) 70.71%
         ),
         linear-gradient(
           336deg,
-          ${palette.primary.darkIndigo[800]},
+          ${palette.neutrals.quaternaryBg},
           rgba(0, 0, 0, 0) 50.71%
         );
     `;

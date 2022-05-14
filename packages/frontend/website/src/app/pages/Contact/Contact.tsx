@@ -5,13 +5,12 @@ import { Container } from "./styledComponents";
 interface IProps {
   route: any;
 }
-
-export const Profile = (props: IProps): ReactElement => {
+export const Contact = (props: IProps): ReactElement => {
   const {
     route: { title },
   } = props;
   return (
-    <Container id="profile-page">
+    <Container id="contact-page">
       <PageStructure>
         <div className="header">
           <div className="header-content">
@@ -30,6 +29,6 @@ export const Profile = (props: IProps): ReactElement => {
   );
 };
 
-Profile.displayName = "Profile";
+Contact.displayName = "Contact";
 
-Profile.defaultProps = {};
+Contact.defaultProps = {};

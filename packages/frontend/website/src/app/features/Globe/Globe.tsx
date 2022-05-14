@@ -94,7 +94,7 @@ export const Globe = memo((props: IProps): ReactElement => {
           ref={globeEl}
           height={isMobile ? containerSize.width : containerSize.height}
           width={containerSize.width}
-          globeImageUrl={images.plainDeepBlue}
+          globeImageUrl={images.plainDarkBlue}
           backgroundColor="rgba(0,0,0,0)"
           showGlobe={true}
           showAtmosphere={true}
@@ -102,10 +102,13 @@ export const Globe = memo((props: IProps): ReactElement => {
           atmosphereAltitude={0.15}
           atmosphereColor={theme.dsl.palette.tertiary.blue[500]}
           polygonsData={landPolygons}
-          polygonCapColor={() => theme.dsl.palette.primary.purple[400]}
+          polygonCapColor={() => theme.dsl.palette.primary.purple[800]}
           polygonSideColor={() =>
             theme.dsl.hexToRgba(theme.dsl.palette.secondary.neon[500], 5)
           }
+          onGlobeReady={() => {
+            console.log("");
+          }}
           // label
           labelsData={[originRing]}
           labelLabel={() => "You"}

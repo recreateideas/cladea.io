@@ -16,6 +16,7 @@ export const Container = styled(ContainerBS)`
       position: relative;
       .navbar {
         padding: 8px;
+        background-color: ${palette.neutrals.secondaryBg};
         .brand-link {
           display: flex;
           gap: 8px;

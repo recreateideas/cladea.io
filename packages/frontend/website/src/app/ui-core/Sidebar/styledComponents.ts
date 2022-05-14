@@ -1,3 +1,4 @@
+import hexToRgba from "hex-rgba";
 import styled, { css, FlattenInterpolation } from "styled-components";
 
 interface StylesMap {
@@ -17,6 +18,7 @@ export const Container = styled.div<{
       from = "left",
       theme: {
         dsl: {
+          palette,
           layout: { namedZIndex },
         },
       },
@@ -32,6 +34,17 @@ export const Container = styled.div<{
     };
     return css`
       ${styles[type]}
+      .backdrop {
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        background-color: ${hexToRgba(palette.neutrals.secondaryBg, 40)};
+        z-index: ${namedZIndex.leftSidebar - 1};
+      }
     `;
   }}
 `;
@@ -48,6 +61,7 @@ export const Content = styled.div<{
       from = "left",
       theme: {
         dsl: {
+          layout: { namedZIndex },
           palette: {
             neutrals: { borders, secondaryBg, boxShadow },
           },
@@ -70,6 +84,7 @@ export const Content = styled.div<{
       height: 100%;
       background-color: ${secondaryBg};
       transition: width 0.2s ease-in-out;
+      z-index: ${namedZIndex.leftSidebar};
       ${styles[`${isOpen}`]}
     `;
   }}
@@ -89,6 +104,7 @@ export const Handle = styled.div`
     } = props;
     return css`
       top: ${layout.margin.xsmall};
+      z-index: ${layout.namedZIndex.leftSidebar};
     `;
   }}
 `;

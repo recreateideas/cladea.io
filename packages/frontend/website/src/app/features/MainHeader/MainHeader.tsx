@@ -11,7 +11,7 @@ export const MainHeader = (props: IProps): ReactElement => {
   const { pathname } = useLocation();
   return (
     <Container className="main-header">
-      <Navbar className="navbar" bg="dark" variant="dark">
+      <Navbar className="navbar">
         <Navbar.Brand>
           <StyledLink linkClassName="brand-link" to="/">
             <img
@@ -27,7 +27,6 @@ export const MainHeader = (props: IProps): ReactElement => {
         <div className="navigation">
           {routes.map((route, i) => {
             const isActive = pathname === route.path;
-            isActive && console.log(route.path, pathname);
             return (
               <StyledLink key={i} to={route.path} isActive={isActive}>
                 {route.title}

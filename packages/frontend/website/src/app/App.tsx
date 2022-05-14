@@ -50,7 +50,7 @@ export const App = (): ReactElement => {
                   <>
                     <Tracker />
                     <PageContainer>
-                      <Component {...props} />
+                      <Component {...props} route={routeObj} />
                     </PageContainer>
                   </>
                 )}

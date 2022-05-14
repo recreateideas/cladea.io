@@ -22,7 +22,7 @@ export const Container = styled(ContainerBS)`
         margin-top: 24px;
         display: flex;
         flex-direction: column;
-        gap: 16px;
+        gap: 24px;
       }
     `;
   }}

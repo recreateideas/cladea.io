@@ -1,4 +1,4 @@
-import { Career, Home, Profile } from "../app/pages";
+import { Career, Contact, Home, Profile } from "../app/pages";
 
 export const routes = [
   {
@@ -27,5 +27,14 @@ export const routes = [
       mainView: Career,
     },
     context: "career",
+  },
+  {
+    title: "Contact",
+    path: "/contact",
+    exact: true,
+    components: {
+      mainView: Contact,
+    },
+    context: "contact",
   },
 ];

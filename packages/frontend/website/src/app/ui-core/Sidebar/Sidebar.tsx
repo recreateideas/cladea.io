@@ -25,6 +25,7 @@ export const Sidebar = (props: IProps): ReactElement => {
   const onToggle = () => setIsOpen((o) => !o);
   return (
     <Container className="sidebar" {...{ type, width, from }}>
+      {isOpen && <div className="backdrop" />}
       <Content className="sidebar-content" {...{ isOpen, width, from }}>
         <ClickOutside callback={setIsOpen.bind(null, false)}>
           <div>{children}</div>

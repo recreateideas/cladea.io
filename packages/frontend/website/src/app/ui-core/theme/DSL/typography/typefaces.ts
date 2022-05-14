@@ -10,6 +10,15 @@ import {
 export const typefaceFactory = (mode: ThemeMode): ThemeFontTypes => {
   const { fonts } = paletteFactory(mode);
   return {
+    h0: ({
+      color = "primary",
+      weight: fontWeight = 100,
+    }: ThemeFontOptions = {}): ThemeFont => ({
+      fontFamily: family.primary,
+      ...sizes.heading0,
+      color: fonts[color],
+      fontWeight,
+    }),
     h1: ({
       color = "primary",
       weight: fontWeight = 400,
@@ -25,6 +34,15 @@ export const typefaceFactory = (mode: ThemeMode): ThemeFontTypes => {
     }: ThemeFontOptions = {}): ThemeFont => ({
       fontFamily: family.primary,
       ...sizes.heading2,
+      color: fonts[color],
+      fontWeight,
+    }),
+    h3: ({
+      color = "primary",
+      weight: fontWeight = 400,
+    }: ThemeFontOptions = {}): ThemeFont => ({
+      fontFamily: family.primary,
+      ...sizes.heading0,
       color: fonts[color],
       fontWeight,
     }),
