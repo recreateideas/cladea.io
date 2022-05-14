@@ -11,7 +11,7 @@ export const Container = styled.div<{ breakpoint: string }>`
     const gap = "4px";
     return css`
       .timeline {
-        padding: 8px 0;
+        padding: 8px ${breakpoint === "sm" ? "0px" : "16px"}; 0 0;
       }
       li:nth-of-type(1) {
         .item-content {
