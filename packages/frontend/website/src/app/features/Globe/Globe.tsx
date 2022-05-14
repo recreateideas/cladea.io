@@ -72,7 +72,7 @@ export const Globe = memo((props: IProps): ReactElement => {
       );
     }
   }, [globeEl, isMobile, current.latitude, current.longitude]);
-  const heightRatio = 1 / global.max?.hits;
+  const heightRatio = Math.max(0.1, 1 / global.max?.hits);
   return (
     <Container
       className="globe-container"
@@ -136,7 +136,7 @@ export const Globe = memo((props: IProps): ReactElement => {
           }
           hexAltitude={(d) => {
             const curr = (d.sumWeight * heightRatio) / 2;
-            const min = Math.max(0.1, curr);
+            const min = Math.max(0.2, curr);
             const max = Math.min(curr, 1);
             return Math.min(min, max);
           }}

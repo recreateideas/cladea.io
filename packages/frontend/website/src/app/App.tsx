@@ -32,7 +32,7 @@ export const App = (): ReactElement => {
     <ErrorBoundary>
       <Router {...{ history }}>
         <Switch>
-          {Object.values(routes).map((routeObj, i) => {
+          {routes.map((routeObj, i) => {
             const {
               title,
               exact,

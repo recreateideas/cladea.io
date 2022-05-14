@@ -15,4 +15,5 @@ export * from "./Checklist";
 export * from "./Spinner";
 export * from "./HeroMessage";
 export * from "./Space";
-export * from "./styledComponents";
+export * from "./Timeline";
+export * from "./StyledLink";

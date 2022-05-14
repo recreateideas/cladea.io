@@ -6,11 +6,13 @@ const keyFrames =
     return keyframes`
   0%, 20%, 40%, 100% {
     box-shadow:none;
+    opacity: 0.3;
   }
   60%, 80% {
     box-shadow: 0px 0px ${
       size * 1.5
     }px 1px rgba(${brightness},${brightness},${brightness},0.9);
+    opacity: 1;
   }`;
   };
 

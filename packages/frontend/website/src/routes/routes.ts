@@ -1,7 +1,7 @@
-import { Home } from "../app/pages";
+import { Career, Home, Profile } from "../app/pages";
 
-export const routes = {
-  home: {
+export const routes = [
+  {
     title: "Home",
     path: "/",
     exact: true,
@@ -10,4 +10,22 @@ export const routes = {
     },
     context: "root",
   },
-};
+  {
+    title: "Profile",
+    path: "/profile",
+    exact: true,
+    components: {
+      mainView: Profile,
+    },
+    context: "profile",
+  },
+  {
+    title: "Career",
+    path: "/career",
+    exact: true,
+    components: {
+      mainView: Career,
+    },
+    context: "career",
+  },
+];

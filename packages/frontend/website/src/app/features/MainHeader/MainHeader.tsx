@@ -1,34 +1,42 @@
 import { ReactElement } from "react";
-import { Nav, Navbar } from "react-bootstrap";
+import { Navbar } from "react-bootstrap";
+import { useLocation } from "react-router-dom";
 import { StyledLink } from "src/app/ui-core";
 import { logo } from "src/app/ui-core/images";
+import { routes } from "src/routes";
 import { Container } from "./styledComponents";
 
 interface IProps {}
 export const MainHeader = (props: IProps): ReactElement => {
+  const { pathname } = useLocation();
+
   return (
     <Container className="main-header">
       <Navbar className="navbar" bg="dark" variant="dark">
-        <Container>
-          <Navbar.Brand>
-            <StyledLink className="brand-link" to="/">
-              <img
-                alt="logo"
-                src={logo}
-                width="30"
-                height="30"
-                className="d-inline-block align-top"
-              />{" "}
-              <div className="nav-brand">cladea.io</div>
-            </StyledLink>
-          </Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
-              <Nav.Link href="/profile">Profile</Nav.Link>
-            </Nav>
-          </Navbar.Collapse>
-        </Container>
+        <Navbar.Brand>
+          <StyledLink linkClassName="brand-link" to="/">
+            <img
+              alt="logo"
+              src={logo}
+              width="30"
+              height="30"
+              className="d-inline-block align-top"
+            />
+            <div className="nav-brand">cladea.io</div>
+          </StyledLink>
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <div className="navigation">
+          {routes.map((route, i) => {
+            const isActive = pathname === route.path;
+            isActive && console.log(route.path, pathname);
+            return (
+              <StyledLink key={i} to={route.path} isActive={isActive}>
+                {route.title}
+              </StyledLink>
+            );
+          })}
+        </div>
       </Navbar>
     </Container>
   );

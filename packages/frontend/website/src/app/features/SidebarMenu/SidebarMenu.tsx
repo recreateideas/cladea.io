@@ -6,8 +6,8 @@ import { Container } from "./styledComponents";
 
 interface IProps {}
 export const SidebarMenu = (props: IProps): ReactElement => {
-  const openIcon = <Menu />;
-  const closeIcon = <ChevronLeft />;
+  const openIcon = <Menu style={{ fontSize: "32px" }} />;
+  const closeIcon = <ChevronLeft style={{ fontSize: "32px" }} />;
   return (
     <Sidebar {...{ width: 200, from: "left", openIcon, closeIcon }}>
       <Container>
