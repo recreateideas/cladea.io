@@ -17,8 +17,8 @@ export const initialState: AppState = {
       sm: 600,
     },
     margins: {
-      lg: 160,
-      md: 48,
+      lg: 240,
+      md: 160,
       sm: 4,
     },
   },
