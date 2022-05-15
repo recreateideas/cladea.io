@@ -22,7 +22,7 @@ export const Container = styled.div`
           display: flex;
           justify-content: center;
           img {
-            height: 10vh;
+            height: 8vh;
           }
         }
         .copyright {

@@ -19,8 +19,12 @@ export const Tech = (props: IProps): ReactElement => {
         </div>
         <div className="body">
           <div className="body-main-content">
-            <div className="contained-section"></div>
-            <div className="contained-section"></div>
+            <div className="contained-section">
+              <div className="content">
+                <div className="wip h1">Work In Progress</div>
+                <div className="come-back h2">come back soon</div>
+              </div>
+            </div>
           </div>
         </div>
         <div className="footer"></div>

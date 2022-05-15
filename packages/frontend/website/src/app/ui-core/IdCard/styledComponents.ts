@@ -5,14 +5,14 @@ export const Container = styled.div<{ breakpoint: string }>`
   ${(props) => {
     const {
       theme: {
-        dsl: { palette },
+        dsl: { layout, palette },
       },
       breakpoint,
     } = props;
-    const width = breakpoint === "sm" ? "100%" : "30vw";
+    const isSmall = breakpoint === "sm";
+    const width = isSmall ? "100%" : "30vw";
     return css`
       border-radius: 12px;
-      /* height: 600px; */
       min-width: ${width};
       background-color: ${palette.neutrals.quaternaryBg};
       border: solid 1px ${palette.neutrals.borders};
@@ -22,14 +22,18 @@ export const Container = styled.div<{ breakpoint: string }>`
         height: 60vh;
         fill: ${palette.neutrals.secondaryBg};
       }
-      z-index: 1000;
+      z-index: ${layout.namedZIndex.leftSidebar - 1};
+      .bio {
+        display: flex;
+        flex-direction: column;
+      }
       .avatar {
         position: relative;
         border-radius: 100%;
         overflow: hidden;
         background: ${palette.neutrals.primaryBg};
-        width: 220px;
-        height: 220px;
+        width: 20vh;
+        height: 20vh;
         margin: 24px auto;
         .image-container {
           border-radius: 100%;
@@ -67,8 +71,8 @@ export const Container = styled.div<{ breakpoint: string }>`
         display: flex;
         flex-direction: column;
         gap: 16px;
-        margin: 24px;
-        padding: 32px;
+        margin: ${isSmall ? "2vh" : "24px"} 24px;
+        padding: ${isSmall ? "2vh" : "24px"};
         border: solid 1px ${palette.neutrals.borders};
         border-radius: 8px;
         background-color: ${palette.neutrals.secondaryBg};
@@ -82,6 +86,7 @@ export const Container = styled.div<{ breakpoint: string }>`
             display: flex;
             gap: 16px;
             color: ${palette.fonts.primary};
+            cursor: pointer;
             img {
               width: 36px;
             }
@@ -91,6 +96,54 @@ export const Container = styled.div<{ breakpoint: string }>`
               justify-content: center;
               width: 80px;
             }
+          }
+        }
+      }
+    `;
+  }};
+`;
+
+export const ToastContainer = styled.div`
+  ${(props) => {
+    const {
+      theme: {
+        dsl: { palette },
+      },
+    } = props;
+    return css`
+      .toast {
+        display: block;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%);
+        min-width: 450px;
+        background-color: ${palette.neutrals.quaternaryBg};
+        box-shadow: ${palette.neutrals.boxShadow(palette.secondary.neon[500])};
+        border: solid 1px ${palette.neutrals.borders};
+        .btn-close {
+          color: ${palette.fonts.primary};
+          background-color: ${palette.secondary.neon[500]};
+        }
+        .toast-header {
+          justify-content: space-between;
+          background-color: ${palette.neutrals.primaryBg};
+          button {
+            margin-right: 0;
+          }
+          .header-title {
+            font-weight: 600;
+            width: 100%;
+            color: ${palette.secondary.neon[500]};
+          }
+        }
+
+        .body-content {
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          .copied-value {
+            color: ${palette.tertiary.pink[500]};
           }
         }
       }
