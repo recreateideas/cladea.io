@@ -1,4 +1,5 @@
 import { TimelineItem } from "@mui/lab";
+import hexToRgba from "hex-rgba";
 import styled, { css } from "styled-components";
 
 const gap = "4px";
@@ -43,6 +44,7 @@ export const Role = styled(TimelineItem)<{
   isPromotion?: boolean;
   isBeforePromotion?: boolean;
   isActive?: boolean;
+  isExpanded?: boolean;
 }>`
   ${(props) => {
     const {
@@ -53,6 +55,7 @@ export const Role = styled(TimelineItem)<{
       isPromotion,
       isBeforePromotion,
       isActive,
+      isExpanded,
     } = props;
     return css`
       cursor: pointer;
@@ -77,10 +80,15 @@ export const Role = styled(TimelineItem)<{
           border-radius: 12px;
           margin: ${gap};
           padding: 8px;
+          padding-bottom: 0;
           background-color: ${palette.neutrals.quaternaryBg};
+
           ${isActive &&
           css`
-            box-shadow: ${palette.neutrals.boxShadow()};
+            box-shadow: ${palette.neutrals.boxShadow(
+              palette.tertiary.pink[500]
+            )};
+            border: solid 1px ${hexToRgba(palette.tertiary.pink[500], 70)};
           `};
         }
       }
@@ -110,6 +118,14 @@ export const Role = styled(TimelineItem)<{
       .header-bottom {
         display: flex;
         justify-content: space-between;
+        box-sizing: border-box;
+        padding-bottom: 8px;
+        border-bottom: solid 1px transparent;
+        transition: border-bottom 0.4s;
+        ${isExpanded &&
+        css`
+          border-bottom: solid 1px ${palette.neutrals.borders};
+        `}
         .company-name {
           width: 100%;
           color: ${palette.secondary.neon[900]};
@@ -142,7 +158,7 @@ export const Role = styled(TimelineItem)<{
             position: absolute;
             transform: translateX(calc(-50% + 1px)) translateY(-8px);
             background-color: ${palette.tertiary.pink[500]};
-            border: solid 3px ${palette.neutrals.secondaryBg};
+            border: solid 3px ${palette.neutrals.primaryBg};
             box-sizing: border-box;
             width: 15px;
             height: 15px;
@@ -157,7 +173,7 @@ export const Role = styled(TimelineItem)<{
             position: absolute;
             transform: translateX(calc(-50% + 1px)) translateY(+8px);
             background-color: ${palette.tertiary.pink[500]};
-            border: solid 3px ${palette.neutrals.secondaryBg};
+            border: solid 3px ${palette.neutrals.primaryBg};
             box-sizing: border-box;
             width: 15px;
             height: 15px;
@@ -166,6 +182,9 @@ export const Role = styled(TimelineItem)<{
             bottom: 0;
           }
         `}
+      }
+      .details-container {
+        padding: 8px 0;
       }
     `;
   }}

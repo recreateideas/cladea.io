@@ -29,7 +29,13 @@ export const CareerTimeline = (props: IProps): ReactElement => {
       if (already) {
         const idx = expanded.findIndex((o) => o === i);
         newExpanded.splice(idx, 1);
+        setTimeout(() => {
+          setActiveItemIndex(undefined);
+        }, 320);
       } else {
+        if (activeItemIndex !== i) {
+          setActiveItemIndex(i);
+        }
         newExpanded.push(i);
       }
       return newExpanded;
@@ -52,6 +58,7 @@ export const CareerTimeline = (props: IProps): ReactElement => {
               isPromotion={role.promotion}
               isBeforePromotion={isBeforePromotion}
               isActive={isActive}
+              isExpanded={isExpanded}
               onClick={onItemClick.bind(null, i)}
               onMouseEnter={setActiveItemIndex.bind(null, i)}
               onMouseLeave={setActiveItemIndex.bind(null, undefined)}
@@ -90,11 +97,7 @@ export const CareerTimeline = (props: IProps): ReactElement => {
                 className="item-content"
               >
                 <div className="inner-content">
-                  <div className="header-top">
-                    {isMobile
-                      ? role.shortPosition || role.position
-                      : role.position}
-                  </div>
+                  <div className="header-top">{role.position}</div>
                   <div className="header-bottom">
                     <div className="company-name">{role.companyName}</div>
                     {!isMobile && (
@@ -104,28 +107,15 @@ export const CareerTimeline = (props: IProps): ReactElement => {
                   <Collapse in={isExpanded}>
                     <div className="details-container">
                       <Details className="details description">
-                        <div className="details-title stack">Keys</div>
-                        <div className="details-content">
-                          {role.details.keyPoints?.map((s) => {
-                            return (
-                              <div className="list-item">
-                                <div className="bullet"></div>
-                                {s}
-                              </div>
-                            );
-                          })}
-                        </div>
-                      </Details>
-                      <Details className="details description">
                         {role.details.stack && (
                           <>
                             <div className="details-title stack">Stack</div>
                             <div className="details-content stack">
                               <div className="bullet-list">
-                                {role.details.stack?.map((s) => {
+                                {role.details.stack?.map((s, i) => {
                                   const { label } = stacks[s];
                                   return (
-                                    <div className="list-item bold">
+                                    <div key={i} className="list-item bold">
                                       <div className="bullet"></div>
                                       {label}
                                     </div>
@@ -135,6 +125,19 @@ export const CareerTimeline = (props: IProps): ReactElement => {
                             </div>
                           </>
                         )}
+                      </Details>
+                      <Details className="details description">
+                        <div className="details-title keys">Keys</div>
+                        <div className="details-content">
+                          {role.details.keyPoints?.map((s, i) => {
+                            return (
+                              <div key={i} className="list-item">
+                                <div className="bullet"></div>
+                                {s}
+                              </div>
+                            );
+                          })}
+                        </div>
                       </Details>
                     </div>
                   </Collapse>

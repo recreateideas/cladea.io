@@ -6,7 +6,7 @@ import { Container } from "./styledComponents";
 interface IProps {
   route: any;
 }
-export const Career = (props: IProps): ReactElement => {
+export const Timeline = (props: IProps): ReactElement => {
   const {
     route: { title },
   } = props;
@@ -29,6 +29,4 @@ export const Career = (props: IProps): ReactElement => {
   );
 };
 
-Career.displayName = "Career";
-
-Career.defaultProps = {};
+Timeline.displayName = "Timeline";

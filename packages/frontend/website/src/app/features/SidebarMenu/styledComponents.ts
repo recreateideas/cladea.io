@@ -16,7 +16,12 @@ export const Container = styled(ContainerBS)`
       .top-logo {
         display: flex;
         justify-content: center;
+      }
+      .nav-brand {
         border-bottom: solid 2px ${palette.neutrals.borders};
+        text-align: center;
+        letter-spacing: 1px;
+        padding-bottom: 8px;
       }
       .navigation {
         margin-top: 24px;

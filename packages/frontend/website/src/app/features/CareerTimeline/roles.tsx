@@ -84,7 +84,6 @@ export const roles = [
   {
     start: "May 2022",
     end: "Present",
-    shortPosition: "Senior Engineer | Lead",
     position: "Senior Full Stack Engineer | Lead",
     companyName: "Beem | Eftpos | AP+",
     details: {
