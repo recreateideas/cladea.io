@@ -6,3 +6,4 @@ import ufo from "./ufo.png";
 import logo from "./logo192.png";
 
 export { moon, planet, plainDeepBlue, plainDarkBlue, ufo, logo };
+export * from "./company-logos";

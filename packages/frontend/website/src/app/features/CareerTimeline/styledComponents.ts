@@ -84,16 +84,57 @@ export const Role = styled(TimelineItem)<{
           `};
         }
       }
+      .company-logo {
+        border-radius: 100%;
+        overflow: hidden;
+        margin: 10px 0;
+        ${isBeforePromotion &&
+        css`
+          margin-top: 2px;
+        `}
+        ${isPromotion &&
+        css`
+          margin-bottom: 2px;
+        `}
+        img {
+          /* width: 10vw;
+          height: 10vw; */
+          max-width: 48px;
+          max-height: 48px;
+        }
+      }
       .header-top {
         font-weight: 600;
         margin-bottom: 4px;
       }
       .header-bottom {
-        color: ${palette.secondary.neon[900]};
+        display: flex;
+        justify-content: space-between;
+        .company-name {
+          width: 100%;
+          color: ${palette.secondary.neon[900]};
+        }
+        .company-location {
+          ${typography.typefaces.label({ color: "secondary" })}
+          white-space: nowrap;
+          line-height: 22px;
+        }
       }
       .connector {
         background-color: ${palette.tertiary.pink[500]};
         position: relative;
+        ${isBeforePromotion &&
+        css`
+          &.bottom {
+            max-height: 24px !important;
+          }
+        `}
+        ${isPromotion &&
+        css`
+          &.top {
+            max-height: 24px !important;
+          }
+        `}
         ${isPromotion &&
         css`
           &.bottom:after {
@@ -103,8 +144,8 @@ export const Role = styled(TimelineItem)<{
             background-color: ${palette.tertiary.pink[500]};
             border: solid 3px ${palette.neutrals.secondaryBg};
             box-sizing: border-box;
-            width: 13px;
-            height: 13px;
+            width: 15px;
+            height: 15px;
             border-radius: 100%;
             z-index: 0;
           }
@@ -118,13 +159,58 @@ export const Role = styled(TimelineItem)<{
             background-color: ${palette.tertiary.pink[500]};
             border: solid 3px ${palette.neutrals.secondaryBg};
             box-sizing: border-box;
-            width: 13px;
-            height: 13px;
+            width: 15px;
+            height: 15px;
             border-radius: 100%;
             z-index: 0;
             bottom: 0;
           }
         `}
+      }
+    `;
+  }}
+`;
+
+export const Details = styled.div`
+  ${(props) => {
+    const {
+      theme: {
+        dsl: { typography, palette },
+      },
+    } = props;
+    return css`
+      .details-title {
+        margin-left: 8px;
+        ${typography.typefaces.p({ color: "secondary" })}
+      }
+      .details-content {
+        margin-left: 16px;
+      }
+      .list-item {
+        display: flex;
+        &.bold {
+          font-weight: 600;
+        }
+        .bullet {
+          width: 6px;
+          min-width: 6px;
+          height: 6px;
+          margin: 8px 8px auto 8px;
+          border-radius: 100%;
+          background-color: ${palette.tertiary.pink[500]};
+        }
+      }
+      .color-neon {
+        color: ${palette.secondary.neon[500]};
+      }
+      .color-yellow {
+        color: ${palette.secondary.yellow[500]};
+      }
+      .color-orange {
+        color: ${palette.secondary.orange[500]};
+      }
+      .color-green {
+        color: ${palette.secondary.green[500]};
       }
     `;
   }}
