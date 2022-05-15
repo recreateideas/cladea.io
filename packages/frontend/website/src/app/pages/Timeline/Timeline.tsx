@@ -1,6 +1,6 @@
 import { ReactElement } from "react";
 import { CareerTimeline } from "src/app/features";
-import { PageStructure } from "src/app/ui-core";
+import { PageStructure, Space } from "src/app/ui-core";
 import { Container } from "./styledComponents";
 
 interface IProps {
@@ -12,6 +12,7 @@ export const Timeline = (props: IProps): ReactElement => {
   } = props;
   return (
     <Container id="career-page">
+      <Space {...{ starsCount: 50, withPlanets: false, withUfo: false }} />
       <PageStructure>
         <div className="header">
           <div className="header-content">

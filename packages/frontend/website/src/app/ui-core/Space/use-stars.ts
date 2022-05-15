@@ -18,7 +18,7 @@ export const useStars = (count: number) => {
         const left = Math.floor(Math.random() * innerWidth) + 1;
         const size = Math.floor(Math.random() * maxSize) + 1;
         const duration = Math.random() * 10 + 2;
-        const brightness = 100 + size * (155 / maxSize);
+        const brightness = 100 + size * (count / maxSize);
         return css`
           position: absolute;
           border-radius: 100%;

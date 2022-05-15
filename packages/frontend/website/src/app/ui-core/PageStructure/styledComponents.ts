@@ -103,8 +103,12 @@ export const Container = styled.div.attrs({
           .contained-section {
             width: 100%;
             border-radius: 64px;
-            border: solid 1px white;
             min-height: 400px;
+            background-color: ${palette.neutrals.quaternaryBg};
+            border: solid 1px ${palette.neutrals.borders};
+            box-shadow: ${palette.neutrals.boxShadow(
+              palette.tertiary.pink[500]
+            )};
           }
         }
       }

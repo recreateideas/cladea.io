@@ -38,7 +38,7 @@ export const routes = [
     context: "timeline",
   },
   {
-    title: "Contact",
+    title: "Make Contact",
     path: "/contact",
     exact: true,
     components: {

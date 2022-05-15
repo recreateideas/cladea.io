@@ -14,20 +14,10 @@ export const Container = styled.div`
     } = props;
     return css`
       background: linear-gradient(
-          217deg,
-          ${palette.neutrals.primaryBg},
-          rgba(0, 0, 0, 0) 50.71%
-        ),
-        linear-gradient(
-          127deg,
-          ${palette.neutrals.ternaryBg},
-          rgba(0, 0, 0, 0) 70.71%
-        ),
-        linear-gradient(
-          336deg,
-          ${palette.neutrals.quaternaryBg},
-          rgba(0, 0, 0, 0) 50.71%
-        );
+        217deg,
+        ${palette.neutrals.primaryBg},
+        rgba(0, 0, 0, 0) 50.71%
+      );
     `;
   }}
 `;
