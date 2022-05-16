@@ -12,7 +12,7 @@ export const Timeline = (props: IProps): ReactElement => {
   } = props;
   return (
     <Container id="career-page">
-      <Space {...{ starsCount: 50, withPlanets: false, withUfo: false }} />
+      <Space {...{ starsCount: 50, withPlanets: false }} />
       <PageStructure>
         <div className="header">
           <div className="header-content">

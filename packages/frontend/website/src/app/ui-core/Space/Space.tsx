@@ -17,8 +17,9 @@ export const Space = (props: IProps): ReactElement => {
         return <Star className="star" key={i} styledCss={s} />;
       })}
       {withUfo && (
-        <Ufo>
+        <Ufo className="ufo">
           <img src={ufo} alt="flying-saucer" />
+          <div className="mask"></div>
         </Ufo>
       )}
       {withPlanets && (

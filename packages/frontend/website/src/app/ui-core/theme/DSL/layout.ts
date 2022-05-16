@@ -50,5 +50,6 @@ export const namedZIndex = {
   starrySkyPlanet: 49,
   starrySkyMoon: 50,
   starrySkyUfo: 51,
+  careerTimeline: 52,
   homeWorldMap: 52,
 };
