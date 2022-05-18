@@ -82,11 +82,15 @@ export const Planet = styled.div<{ size?: number }>`
 `;
 
 export const Ufo = styled.div`
+  .flying-saucer {
+    /* transform: scale(0.5); */
+    width: 100px !important;
+  }
   ${(props) => {
     const {
       theme: {
         dsl: {
-          animations: { orbit },
+          animations: { orbit2 },
           layout: {
             namedZIndex: { starrySkyUfo },
           },
@@ -94,23 +98,29 @@ export const Ufo = styled.div`
       },
     } = props;
     const { innerHeight, innerWidth } = window;
-    const diagonal = Math.sqrt(
-      Math.pow(innerHeight, 2) + Math.pow(innerWidth, 2)
-    );
     return css`
       display: flex;
       position: absolute;
       z-index: ${starrySkyUfo};
-      left: ${innerWidth * 0.75}px;
+      /* left: ${innerWidth * 0.6}px; */
       bottom: 0;
-      ${orbit({
-        radius: diagonal * 0.7,
-        duration: 15,
+      img {
+        width: 56px;
+      }
+      ${orbit2({
+        aSymmetric: true,
+        radius: innerHeight - 120,
+        duration: 20,
         startingImageAngle: 108,
       })};
-      img {
-        width: 72px;
-      }
     `;
   }}
 `;
+/**
+
+    ${orbit({
+      radius: diagonal * 0.7,
+      duration: 15,
+      startingImageAngle: 108,
+    })};
+ */

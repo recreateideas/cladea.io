@@ -107,7 +107,7 @@ export const Globe = memo((props: IProps): ReactElement => {
             theme.dsl.hexToRgba(theme.dsl.palette.secondary.neon[500], 5)
           }
           onGlobeReady={() => {
-            console.log("");
+            console.log("Globe ready");
           }}
           // label
           labelsData={[originRing]}
