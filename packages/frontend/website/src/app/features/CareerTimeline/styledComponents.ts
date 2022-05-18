@@ -83,7 +83,7 @@ export const Role = styled(TimelineItem)<{
           padding-bottom: 0;
           background-color: ${palette.neutrals.quaternaryBg};
           transition: all 0.2s;
-          ${isActive &&
+          ${(isActive || isExpanded) &&
           css`
             box-shadow: ${palette.neutrals.boxShadow(
               palette.tertiary.pink[500]
