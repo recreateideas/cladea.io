@@ -82,13 +82,14 @@ export const Role = styled(TimelineItem)<{
           padding: 8px;
           padding-bottom: 0;
           background-color: ${palette.neutrals.quaternaryBg};
-
+          transition: all 0.2s;
           ${isActive &&
           css`
             box-shadow: ${palette.neutrals.boxShadow(
               palette.tertiary.pink[500]
             )};
             border: solid 1px ${hexToRgba(palette.tertiary.pink[500], 70)};
+            transform: scale(1.02);
           `};
         }
       }
