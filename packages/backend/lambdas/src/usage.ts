@@ -2,13 +2,13 @@ import { DynamoDB } from "aws-sdk";
 import axios from "axios";
 import { APIGatewayProxyEvent } from "aws-lambda";
 
-const ipBlacklist = ["203.206.64.2"];
-
 export const handler = async function (event: APIGatewayProxyEvent) {
   console.log("event:", JSON.stringify(event, undefined, 2));
   const {
     requestContext: { identity },
+    headers,
   } = event;
+  const isMe = headers["x-sub"] === "4ea11476-c068-4d2a-a78a-bd5de304ccc1";
   const { sourceIp, userAgent } = identity;
   const response = await axios.get(`https://ipapi.co/${sourceIp}/json/`);
   const {
@@ -53,7 +53,8 @@ export const handler = async function (event: APIGatewayProxyEvent) {
   const dynamo = new DynamoDB();
   var attributes = DynamoDB.Converter.marshall(record);
   try {
-    if (!ipBlacklist.includes(sourceIp)) {
+    if (!isMe) {
+      console.log("updating usage...");
       await dynamo
         .updateItem({
           TableName: `${process.env.TABLE_NAME}`,

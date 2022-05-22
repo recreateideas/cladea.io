@@ -10,7 +10,7 @@ export class ApiGateway extends RestApi {
       defaultCorsPreflightOptions: {
         allowOrigins: Cors.ALL_ORIGINS,
         allowMethods: Cors.ALL_METHODS,
-        allowHeaders: ["Content-Type", "x-access-token"],
+        allowHeaders: ["Content-Type", "x-sub", "x-access-token"],
       },
     });
   }

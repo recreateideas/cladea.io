@@ -7,7 +7,7 @@ type SliceAuth = IReduxStore["appState"]["auth"];
 const auth = (state: SliceAuth = initialState.auth, action: IReduxAction) => {
   const { type, data } = action;
   switch (type) {
-    case types.SAVE_USER_DATA:
+    case types.SET_USER_DATA:
       return {
         ...state,
         user: {

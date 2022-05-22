@@ -4,7 +4,9 @@ import { useLocation } from "react-router-dom";
 import { StyledLink } from "src/app/ui-core";
 import { logo } from "src/app/ui-core/images";
 import { useMargin } from "src/common/hooks";
+import { selectors, User, useSelector } from "src/redux";
 import { routes } from "src/routes";
+import { Avatar } from "../Avatar";
 import { GoogleSSOButton } from "../GoogleSSOButton";
 import { Container } from "./styledComponents";
 
@@ -12,6 +14,8 @@ interface IProps {}
 export const MainHeader = (props: IProps): ReactElement => {
   const { pathname } = useLocation();
   const margin = useMargin();
+  const { auth: authSelectors } = selectors;
+  const user: User = useSelector(authSelectors.user);
   return (
     <Container className="main-header" margin={margin}>
       <Navbar className="navbar">
@@ -38,7 +42,7 @@ export const MainHeader = (props: IProps): ReactElement => {
                 </StyledLink>
               );
             })}
-          <GoogleSSOButton />
+          {/* {!user ? <Avatar /> : <GoogleSSOButton />} */}
         </div>
       </Navbar>
     </Container>

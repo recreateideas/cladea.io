@@ -45,6 +45,12 @@ export const Container = styled.div<{
         background-color: ${hexToRgba(palette.neutrals.secondaryBg, 40)};
         z-index: ${namedZIndex.leftSidebar - 1};
       }
+      .click-outside {
+        height: 100%;
+      }
+      .sidebar-wrapper {
+        height: 100%;
+      }
     `;
   }}
 `;

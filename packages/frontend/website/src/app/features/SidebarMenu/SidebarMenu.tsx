@@ -5,6 +5,7 @@ import { logo } from "src/app/ui-core/images";
 import { Container } from "./styledComponents";
 import { routes } from "src/routes";
 import { useLocation } from "react-router-dom";
+import { GoogleSSOButton } from "../GoogleSSOButton";
 
 interface IProps {}
 export const SidebarMenu = (props: IProps): ReactElement => {
@@ -28,34 +29,41 @@ export const SidebarMenu = (props: IProps): ReactElement => {
       }}
     >
       <Container>
-        <div className="top-logo">
-          <StyledLink className="brand-link" to="/">
-            <img
-              alt="logo"
-              src={logo}
-              width="80"
-              height="80"
-              className="d-inline-block align-top"
-            />
-          </StyledLink>
+        <div className="section top">
+          <div className="top-logo">
+            <StyledLink className="brand-link" to="/">
+              <img
+                alt="logo"
+                src={logo}
+                width="80"
+                height="80"
+                className="d-inline-block align-top"
+              />
+            </StyledLink>
+          </div>
+          <div className="nav-brand">cladea.io</div>
         </div>
-        <div className="nav-brand">cladea.io</div>
-        <div className="navigation">
-          {routes
-            .filter((r) => !r.hidden)
-            .map((route, i) => {
-              const isActive = pathname === route.path;
-              return (
-                <StyledLink
-                  key={i}
-                  to={route.path}
-                  isActive={isActive}
-                  onClick={onNavClick}
-                >
-                  {route.title}
-                </StyledLink>
-              );
-            })}
+        <div className="section middle">
+          <div className="sso">
+            <GoogleSSOButton />
+          </div>
+          <div className="navigation">
+            {routes
+              .filter((r) => !r.hidden)
+              .map((route, i) => {
+                const isActive = pathname === route.path;
+                return (
+                  <StyledLink
+                    key={i}
+                    to={route.path}
+                    isActive={isActive}
+                    onClick={onNavClick}
+                  >
+                    {route.title}
+                  </StyledLink>
+                );
+              })}
+          </div>
         </div>
       </Container>
     </Sidebar>

@@ -1,9 +1,11 @@
 import { ReactElement } from "react";
 import { appConfig } from "src/config";
 import { google } from "src/app/ui-core/images";
-// import { Container } from './styledComponents';
+import { AnchorContainer } from "./styledComponents";
 
-interface IProps {}
+interface IProps {
+  variant?: "small-text";
+}
 export const GoogleSSOButton = (props: IProps): ReactElement => {
   const googleSSO = new URL(`${appConfig.cognitoUrl}/oauth2/authorize`);
   googleSSO.searchParams.append("identity_provider", "Google");
@@ -11,13 +13,14 @@ export const GoogleSSOButton = (props: IProps): ReactElement => {
   googleSSO.searchParams.append("response_type", "code");
   googleSSO.searchParams.append("client_id", appConfig.userpoolClientId);
   return (
-    <a href={googleSSO.toString()}>
-      <img
-        src={google}
-        alt="google login"
-        style={{ width: 24, height: 24, borderRadius: 8 }}
-      ></img>
-    </a>
+    <AnchorContainer href={googleSSO.toString()}>
+      <div className="goo-content">
+        <div className="goo-logo">
+          <img src={google} alt="google login" />
+        </div>
+        <div className="goo-text">Continue with Google</div>
+      </div>
+    </AnchorContainer>
   );
 };
 

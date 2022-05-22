@@ -49,7 +49,7 @@ export const Sidebar = forwardRef(
           {...{ isOpen, width, from }}
         >
           <ClickOutside callback={setIsOpen.bind(null, false)}>
-            <div>{children}</div>
+            <div className="sidebar-wrapper">{children}</div>
           </ClickOutside>
         </Content>
 

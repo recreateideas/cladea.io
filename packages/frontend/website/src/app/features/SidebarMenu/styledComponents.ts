@@ -11,8 +11,23 @@ export const Container = styled(ContainerBS)`
     return css`
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-
+      height: 100%;
+      .section {
+        display: flex;
+        flex-direction: column;
+        &.middle {
+          height: 100%;
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          .sso {
+            position: absolute;
+            top: 16px;
+            width: 100%;
+          }
+        }
+      }
       .top-logo {
         display: flex;
         justify-content: center;

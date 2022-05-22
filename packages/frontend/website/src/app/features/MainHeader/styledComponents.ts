@@ -33,6 +33,10 @@ export const Container = styled(ContainerBS)<{ margin: number }>`
           display: flex;
           width: 100%;
           gap: 32px;
+          .styled-link-container {
+            flex-direction: column;
+            justify-content: center;
+          }
         }
       }
     `;

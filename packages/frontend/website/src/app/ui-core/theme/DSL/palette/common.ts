@@ -43,6 +43,7 @@ export const primary = {
     500: "#031A51",
   } as ThemeColor,
   white: "#ffffff",
+  googleBlue: "#3e7fe8",
 };
 
 export const secondary = {

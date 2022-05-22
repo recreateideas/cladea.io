@@ -9,7 +9,7 @@ export const initialState: AppState = {
     },
   },
   auth: {
-    user: {},
+    user: undefined,
   },
   theme: {
     mode: "dark",

@@ -5,6 +5,7 @@ import { Container } from "./styledComponents";
 export const SSO = (): ReactElement => {
   const dispatch = useDispatch();
   const {
+    router: { navigateTo },
     auth: { exchangeCodeForTokens },
   } = actions;
 
@@ -17,6 +18,7 @@ export const SSO = (): ReactElement => {
         await exchangeCodeForTokens(code)(dispatch);
       })();
     }
+    dispatch(navigateTo("/"));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

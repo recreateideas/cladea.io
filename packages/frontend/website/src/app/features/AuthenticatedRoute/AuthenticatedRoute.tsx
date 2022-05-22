@@ -1,17 +1,16 @@
 import { memo, ReactElement, useEffect, useLayoutEffect } from "react";
 import { LocationDescriptor } from "history";
-import { Route, Redirect } from "react-router-dom";
+import { Route } from "react-router-dom";
 import { isEqual } from "lodash";
-import { actions, selectors, useSelector, useDispatch } from "../../../redux";
-// import { Header } from '..';
-
-// redirectUrl: PropTypes.string,
-// skipGetUser: PropTypes.bool,
-// showBackButton: PropTypes.bool,
-// title: PropTypes.string,
-// contextRoot: PropTypes.string,
-// };
-
+import {
+  actions,
+  selectors,
+  useSelector,
+  useDispatch,
+  User,
+  TokenDataLs,
+} from "../../../redux";
+import { deleteFromLS, getFromLS } from "src/common";
 interface IProps {
   redirectUrl?: LocationDescriptor<unknown>;
   title?: string;
@@ -33,11 +32,14 @@ export const AuthenticatedRoute = memo((props: IProps) => {
   } = props;
   const {
     router: { setRouteParams },
+    auth: { setUserData, refreshToken },
   } = actions;
   const dispatch = useDispatch();
   const { router: routerSelectors } = selectors;
   const location = useSelector(routerSelectors.location);
-  const isAuthenticated = true;
+  const tokenData = getFromLS("tkn") as TokenDataLs;
+  const userData = getFromLS("usr") as User;
+  // const isAuthenticated = !!userData;
 
   const { location: locationProps, path } = routeProps;
   useEffect(() => {
@@ -45,6 +47,24 @@ export const AuthenticatedRoute = memo((props: IProps) => {
       dispatch(setRouteParams(path));
     }
   }, [dispatch, locationProps, path, setRouteParams]);
+
+  useEffect(() => {
+    if (!tokenData || !userData) {
+      deleteFromLS("tkn");
+      deleteFromLS("usr");
+      return;
+    }
+    const minToExpire = Math.floor(
+      (tokenData.expTime - +new Date()) / 1000 / 60
+    );
+    if (minToExpire < 5) {
+      dispatch(refreshToken(tokenData));
+    }
+    // console.log(tokenData);
+    dispatch(setUserData(userData));
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [!!tokenData, !!userData]);
 
   useLayoutEffect(() => {
     document.title = `Cladea.io - ${title}`;
@@ -54,15 +74,7 @@ export const AuthenticatedRoute = memo((props: IProps) => {
     ...routeProps,
     location,
   };
-  return isAuthenticated ? (
-    <>
-      {/* <Header {...{ showBackButton }} /> */}
-      <Route {...allProps} />
-    </>
-  ) : (
-    /* istanbul ignore next */
-    <Redirect to={redirectUrl as LocationDescriptor} />
-  );
+  return <Route {...allProps} />;
 }, isEqual);
 
 AuthenticatedRoute.displayName = "AuthenticatedRoute";
