@@ -9,7 +9,9 @@ export type ErrorHandler = (
   err: AxiosError | unknown
 ) => IHandlerResponse | undefined;
 
-export type ResponseHandler = (err: AxiosResponse) => IHandlerResponse;
+export type ResponseHandler = (
+  err: AxiosResponse
+) => IHandlerResponse | undefined;
 
 export type RequestError = AxiosError;
 export type RequestResponse = AxiosResponse;

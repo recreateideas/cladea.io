@@ -1,4 +1,1 @@
-export interface RouterActionTypes {
-    SET_ROUTE_PARAMS: string;
-    SET_PATHS: string;
-}
+export type RouterActionTypes = Record<string, string>;

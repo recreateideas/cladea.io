@@ -57,3 +57,8 @@ cdk.out
 .env
 
 .stack.env
+
+cdk-outputs.json
+
+client_secret_google.json
+google_keys.json

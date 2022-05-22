@@ -1,4 +1,4 @@
-import { Timeline, Contact, Home, Tech } from "../app/pages";
+import { Timeline, Contact, Home, Tech, SSO } from "../app/pages";
 
 export const routes = [
   {
@@ -36,6 +36,16 @@ export const routes = [
       mainView: Timeline,
     },
     context: "timeline",
+  },
+  {
+    title: "Welcome Back",
+    path: "/sso",
+    exact: true,
+    hidden: true,
+    components: {
+      mainView: SSO,
+    },
+    context: "sso",
   },
   {
     title: "Make Contact",

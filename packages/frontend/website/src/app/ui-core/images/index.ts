@@ -8,6 +8,7 @@ import avatar from "./avatar.png";
 import github from "./github-pixel.png";
 import linkedIn from "./linkedin-pixel.png";
 import gmail from "./gmail-pixel.png";
+import google from "./google.jpg";
 
 export {
   moon,
@@ -20,5 +21,6 @@ export {
   github,
   linkedIn,
   gmail,
+  google,
 };
 export * from "./company-logos";

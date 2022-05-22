@@ -31,6 +31,18 @@ export type Breakpoints = {
 export type Margins = {
   [key: string]: number;
 };
+
+export type User = Partial<{
+  userId: string;
+  firstName: string;
+  lastName: string;
+  imageUrl: string;
+  email: string;
+}>;
+
+export type Auth = {
+  user?: User;
+};
 export interface AppState {
   common: {
     toggles: {
@@ -38,7 +50,7 @@ export interface AppState {
     };
     usageData: UsageData;
   };
-
+  auth: Auth;
   theme: {
     mode: ThemeMode;
     userAgent?: UserAgent;

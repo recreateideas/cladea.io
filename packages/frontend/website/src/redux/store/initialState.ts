@@ -8,6 +8,9 @@ export const initialState: AppState = {
       global: {},
     },
   },
+  auth: {
+    user: {},
+  },
   theme: {
     mode: "dark",
     userAgent: undefined,

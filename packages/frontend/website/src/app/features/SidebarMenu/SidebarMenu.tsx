@@ -41,19 +41,21 @@ export const SidebarMenu = (props: IProps): ReactElement => {
         </div>
         <div className="nav-brand">cladea.io</div>
         <div className="navigation">
-          {routes.map((route, i) => {
-            const isActive = pathname === route.path;
-            return (
-              <StyledLink
-                key={i}
-                to={route.path}
-                isActive={isActive}
-                onClick={onNavClick}
-              >
-                {route.title}
-              </StyledLink>
-            );
-          })}
+          {routes
+            .filter((r) => !r.hidden)
+            .map((route, i) => {
+              const isActive = pathname === route.path;
+              return (
+                <StyledLink
+                  key={i}
+                  to={route.path}
+                  isActive={isActive}
+                  onClick={onNavClick}
+                >
+                  {route.title}
+                </StyledLink>
+              );
+            })}
         </div>
       </Container>
     </Sidebar>

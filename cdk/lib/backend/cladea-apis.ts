@@ -5,12 +5,17 @@ import path from "path";
 import { getBranchName } from "../helpers";
 import { ApiGateway } from "./shared/api-gateway";
 import { Lambda } from "./shared";
+import UserPool from "./user-pool";
+
+export interface ApisProps extends StackProps {
+  userPool: UserPool;
+}
 
 export default class Apis extends Stack {
   public readonly url: string;
   public readonly table: dynamodb.Table;
 
-  constructor(scope: Construct, id: string, props?: StackProps) {
+  constructor(scope: Construct, id: string, props: ApisProps) {
     super(scope, id, {
       ...props,
     });
@@ -18,7 +23,7 @@ export default class Apis extends Stack {
      * Exit here if not master branch
      */
     if (getBranchName(scope) !== "master") return;
-
+    const { userPool } = props;
     const apiGateway = new ApiGateway(this, "apiGateway");
     const oneTable = new dynamodb.Table(this, "OneTable", {
       partitionKey: { name: "pk", type: dynamodb.AttributeType.STRING },
@@ -35,8 +40,21 @@ export default class Apis extends Stack {
       },
     });
 
+    const cognito = new Lambda(this, "cognitoHandler", {
+      entry: path.join(
+        __dirname,
+        `/../../../packages/backend/lambdas/src/cognito.ts`
+      ),
+      environment: {
+        COGNITO_POOL_ID: userPool.userPoolId,
+        COGNITO_CLIENT_ID: userPool.userPoolClientId,
+      },
+    });
+
     oneTable.grantReadWriteData(usage.handler);
+
     apiGateway.addIntegration("GET", `/v1/usage`, usage.handler);
+    apiGateway.addIntegration("GET", `/v1/cognito/{code}`, cognito.handler);
 
     new CfnOutput(this, "apiGatewayUrl", {
       value: apiGateway.url,
