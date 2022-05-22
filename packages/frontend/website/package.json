@@ -46,8 +46,8 @@
     "web-vitals": "2.1.4"
   },
   "scripts": {
-    "start": "source ../../../.stack.env && react-scripts start",
-    "build": "source ../../../.stack.env && react-scripts build",
+    "start": "source ../../../.stack.website-master-api.env && source ../../../.stack.website-master-userpool.env && react-scripts start",
+    "build": "source ../../../.stack.website-master-api.env && source ../../../.stack.website-master-userpool.env && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "deploy:code": "./deploy-code.sh"

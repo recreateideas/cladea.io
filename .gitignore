@@ -56,7 +56,7 @@ cdk.out
 
 .env
 
-.stack.env
+.stack.*.env
 
 cdk-outputs.json
 

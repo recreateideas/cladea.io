@@ -6,10 +6,7 @@ import {
 import * as AWS from "aws-sdk";
 import fs from "fs-extra";
 import path from "path";
-
-const whitelist = [
-  { key: "apiGatewayUrl", envName: "REACT_APP_API_GATEWAY_URL" },
-];
+import { whitelist } from "./env-whitelist";
 
 (async () => {
   try {
@@ -40,11 +37,11 @@ const whitelist = [
             acc +
             `export ${String(
               whitelist.find((w) => w.key === OutputKey)?.envName
-            )}=${String(OutputValue)};`,
+            )}=${String(OutputValue)};\n`,
           ""
         );
       fs.writeFileSync(
-        path.resolve(__dirname, "../../.stack.env"),
+        path.resolve(__dirname, `../../.stack.${stackName}.env`),
         variablesEnvFile
       );
     }

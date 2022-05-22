@@ -1,6 +1,6 @@
 import { Dispatch } from "redux";
 import types from "./types";
-import * as appConfig from "src/config";
+import { appConfig } from "src/config";
 import {
   fetcher,
   IFetcherConfig,

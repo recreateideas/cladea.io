@@ -5,17 +5,17 @@ import { Container } from "./styledComponents";
 export const SSO = (): ReactElement => {
   const dispatch = useDispatch();
   const {
-    auth: { saveUserData },
+    auth: { exchangeCodeForTokens },
   } = actions;
 
   useEffect(() => {
-    const parsedHash = new URLSearchParams(
-      window.location.hash.substring(1) // skip the first char (#)
-    );
-    const idToken = parsedHash.get("id_token");
+    const parsed = new URL(window.location.href);
+    const code = parsed.searchParams.get("code");
 
-    if (idToken) {
-      dispatch(saveUserData(idToken));
+    if (code) {
+      (async () => {
+        await exchangeCodeForTokens(code)(dispatch);
+      })();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

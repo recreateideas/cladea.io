@@ -8,3 +8,4 @@ export * from "./MainHeader";
 export * from "./MainFooter";
 export * from "./SidebarMenu";
 export * from "./CareerTimeline";
+export * from "./GoogleSSOButton";

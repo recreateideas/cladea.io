@@ -1,4 +1,6 @@
 import * as cognito from "aws-cdk-lib/aws-cognito";
+import * as cr from "aws-cdk-lib/custom-resources";
+
 import * as cdk from "aws-cdk-lib";
 import secrets from "../../../client_secret_google.json";
 import { ProviderAttribute } from "aws-cdk-lib/aws-cognito";
@@ -7,6 +9,7 @@ import { Duration } from "aws-cdk-lib";
 export default class UserPool extends cdk.Stack {
   public userPoolId: string;
   public userPoolClientId: string;
+  public userPoolClientSecret: string;
 
   constructor(scope: cdk.App, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
@@ -129,6 +132,37 @@ export default class UserPool extends cdk.Stack {
     });
     new cdk.CfnOutput(this, "userPoolClientId", {
       value: userPoolClient.userPoolClientId,
+    });
+
+    const describeCognitoUserPoolClient = new cr.AwsCustomResource(
+      this,
+      "DescribeCognitoUserPoolClient",
+      {
+        resourceType: "Custom::DescribeCognitoUserPoolClient",
+        onCreate: {
+          region: props?.env?.region,
+          service: "CognitoIdentityServiceProvider",
+          action: "describeUserPoolClient",
+          parameters: {
+            UserPoolId: userPool.userPoolId,
+            ClientId: userPoolClient.userPoolClientId,
+          },
+          physicalResourceId: cr.PhysicalResourceId.of(
+            userPoolClient.userPoolClientId
+          ),
+        },
+        policy: cr.AwsCustomResourcePolicy.fromSdkCalls({
+          resources: cr.AwsCustomResourcePolicy.ANY_RESOURCE,
+        }),
+      }
+    );
+
+    this.userPoolClientSecret = describeCognitoUserPoolClient.getResponseField(
+      "UserPoolClient.ClientSecret"
+    );
+
+    new cdk.CfnOutput(this, "userPoolClientSecret", {
+      value: this.userPoolClientSecret,
     });
   }
 }

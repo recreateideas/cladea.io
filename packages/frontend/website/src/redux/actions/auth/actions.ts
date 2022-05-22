@@ -1,6 +1,6 @@
 import { Dispatch } from "redux";
 import types from "./types";
-import * as appConfig from "src/config";
+import { appConfig } from "src/config";
 import jwt from "jwt-decode";
 import {
   fetcher,
@@ -9,6 +9,7 @@ import {
   RequestResponse,
 } from "src/redux/modules";
 import { saveToLS } from "src/common";
+import qs from "qs";
 
 interface DecodedToken {
   sub: string;
@@ -31,27 +32,51 @@ interface DecodedIdToken extends DecodedToken {
   family_name: string;
   picture: string;
 }
-export const exchangeTokenForUserAttributes =
-  (token: string) => async (dispatch: Dispatch) => {
-    dispatch({ type: types.EXCHANGE_TOKEN_FOR_USER_DETAILS_PENDING });
-    const user: DecodedToken = jwt(token);
+export const exchangeCodeForTokens =
+  (code: string) => async (dispatch: Dispatch) => {
+    dispatch({ type: types.EXCHANGE_CODE_FOR_TOKENS_PENDING });
+    console.log(code);
     const config = {
-      url: `${appConfig.apiGatewaUrl}/v1/cognito/${user.username}`,
-      method: "GET",
+      url: `${appConfig.cognitoUrl}/oauth2/token`,
+      method: "POST",
       headers: {
-        "Content-Type": "application/json",
-        "x-access-token": token,
+        "Content-Type": "application/x-www-form-urlencoded",
       },
+      auth: {
+        username: appConfig.userpoolClientId,
+        password: appConfig.userpoolSecret,
+      },
+      data: qs.stringify({
+        grant_type: "authorization_code",
+        code,
+        client_id: appConfig.userpoolClientId,
+        client_secret: appConfig.userpoolSecret,
+        redirect_uri: "https://www.cladea.io/sso",
+      }),
       errorHandler: (error: RequestError) => {
         dispatch({
-          type: types.EXCHANGE_TOKEN_FOR_USER_DETAILS_ERROR,
+          type: types.EXCHANGE_CODE_FOR_TOKENS_ERROR,
           data: { error },
         });
       },
       responseHandler: (response: RequestResponse) => {
         const { data: tokenData } = response;
+        const idTokenData: DecodedIdToken = jwt(tokenData.id_token);
+        const userData = {
+          firstName: idTokenData.given_name,
+          lastName: idTokenData.family_name,
+          imageUrl: idTokenData.picture,
+          email: idTokenData.email,
+          userId: idTokenData.sub,
+        };
+        const tkn = {
+          ...tokenData,
+          expTime: +new Date() / 1000 + tokenData.expires_in,
+        };
+        saveToLS("usr", userData);
+        saveToLS("tkn", tkn);
         dispatch({
-          type: types.EXCHANGE_TOKEN_FOR_USER_DETAILS_SUCCESS,
+          type: types.EXCHANGE_CODE_FOR_TOKENS_SUCCESS,
           data: { tokenData },
         });
       },
@@ -59,26 +84,3 @@ export const exchangeTokenForUserAttributes =
     await fetcher(config);
     return;
   };
-
-export const saveUserData = (idToken: string) => async (dispatch: Dispatch) => {
-  dispatch({ type: types.EXCHANGE_TOKEN_FOR_USER_DETAILS_PENDING });
-  const tokenData: DecodedIdToken = jwt(idToken);
-  const userData = {
-    firstName: tokenData.given_name,
-    lastName: tokenData.family_name,
-    imageUrl: tokenData.picture,
-    email: tokenData.email,
-    userId: tokenData.sub,
-  };
-  const { exp } = tokenData;
-  const now = +new Date() / 1000;
-  const stillValidForMinutes = (exp - now) / 60;
-  if (stillValidForMinutes < 5) {
-    console.log("refresh");
-  }
-  saveToLS("usr", JSON.stringify({ userData, exp }));
-  dispatch({
-    type: types.SAVE_USER_DATA,
-    data: { userData },
-  });
-};
