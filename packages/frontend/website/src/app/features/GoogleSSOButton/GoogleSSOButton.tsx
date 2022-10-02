@@ -9,7 +9,10 @@ interface IProps {
 export const GoogleSSOButton = (props: IProps): ReactElement => {
   const googleSSO = new URL(`${appConfig.cognitoUrl}/oauth2/authorize`);
   googleSSO.searchParams.append("identity_provider", "Google");
-  googleSSO.searchParams.append("redirect_url", "https://www.cladea.io/sso");
+  googleSSO.searchParams.append(
+    "redirect_url",
+    `${window.location.origin}/sso`
+  );
   googleSSO.searchParams.append("response_type", "code");
   googleSSO.searchParams.append("client_id", appConfig.userpoolClientId);
   return (

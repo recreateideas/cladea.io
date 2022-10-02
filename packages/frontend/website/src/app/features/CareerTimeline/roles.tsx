@@ -82,15 +82,17 @@ export const stacks: Stacks = {
 
 export const roles = [
   {
-    start: "May 2022",
+    start: "September 2022",
     end: "Present",
-    position: "Senior Full Stack Engineer | Lead",
+    position: "Staff Engineer",
     companyName: "Beem | Eftpos | AP+",
     details: {
       keyPoints: [
-        "Architect and implement solutions using AWS SAM framework and a wide array of AWS services",
-        "Provide mentoring and support to junior developers",
-        "Ensure best practices are followed and implemented at every step of the development lifecycle",
+        "Proactively mentor engineers.",
+        "Identify staff who need support and/or encouragement and provide guidance outside of the regular chapter management structure.",
+        "Be across multiple projects to ensure all engineers are working efficiently and following company's engineering processes and practices.",
+        "Work with chapter leads to plan and execute improvements and changes.",
+        "Represent company's best practices.",
       ],
       stack: [
         "aws",
@@ -108,16 +110,18 @@ export const roles = [
   },
   {
     start: "Nov 2021",
-    end: "May 2022",
-    position: "Senior Full Stack Engineer",
+    end: "September 2022",
+    position: "Senior Full Stack Engineer | Tech Lead",
     companyName: "Beem | Eftpos | AP+",
     details: {
       keyPoints: [
         "Implement efficient payment flows involving AWS StepFunctions state machines",
         "Integrate and liaise with cutting edge 3rd party providers to provide secure QR payments",
         "Design and implement OAuth0, Oauth2, OIDC solutions",
+        "Provide mentoring and support to junior developers",
         "Architect and implement solutions using AWS SAM framework and a wide array of AWS services",
         "App Prototyping utilising React | Redux, AWS Web Sockets, queues, Lambdas, DynamoDb single table architecture",
+        "Ensure best practices are followed and implemented at every step of the development lifecycle",
       ],
       stack: [
         "react16",
