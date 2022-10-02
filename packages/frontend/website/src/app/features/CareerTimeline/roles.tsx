@@ -110,7 +110,7 @@ export const roles = [
   },
   {
     start: "Nov 2021",
-    end: "September 2022",
+    end: "Sep 2022",
     position: "Senior Full Stack Engineer | Tech Lead",
     companyName: "Beem | Eftpos | AP+",
     details: {
