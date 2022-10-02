@@ -82,7 +82,7 @@ export const stacks: Stacks = {
 
 export const roles = [
   {
-    start: "September 2022",
+    start: "Sep 2022",
     end: "Present",
     position: "Staff Engineer",
     companyName: "Beem | Eftpos | AP+",
