@@ -24,10 +24,10 @@ export const fetcher = async (
   let response;
   try {
     response = await axios(url, params);
-    console.log(response);
+    // console.log(response);
   } catch (error) {
     const { response: { data } = {} } = error as RequestError;
-    console.log(error, (error as RequestError).response);
+    // console.log(error, (error as RequestError).response);
     return errorHandler(data);
   }
   return responseHandler(response);

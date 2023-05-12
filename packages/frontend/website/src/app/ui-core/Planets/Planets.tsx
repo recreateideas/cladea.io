@@ -1,7 +1,6 @@
 import { ReactElement, useMemo } from "react";
-import { Container } from "./styledComponents";
+import { Container, Moon, Planet } from "./styledComponents";
 import { moon, planet } from "../images";
-import { Moon, Planet } from "../Space/styledComponents";
 import { useAudio } from "src/common/hooks/use-audio";
 import scream1 from "src/assets/sounds/scream1.mp3";
 

@@ -13,7 +13,6 @@ export const Tracker = (props: IProps): ReactElement => {
   } = actions;
   const user = useSelector(authSelectors.user);
   useEffect(() => {
-    console.log(user);
     if ((userDataLs && user?.userId) || !userDataLs) {
       dispatch(makeUseRequest());
     }

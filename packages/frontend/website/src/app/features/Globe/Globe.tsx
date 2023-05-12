@@ -42,7 +42,7 @@ export const Globe = memo((props: IProps): ReactElement => {
   const { isMobile } = theme.userAgent || {};
   const { common: commonSelectors } = selectors;
   const { current, global } = useSelector(commonSelectors.usageData);
-
+  console.log(global);
   const [containerSize, setContainerSize] = useState<ContainerSize>(
     {} as ContainerSize
   );
@@ -107,7 +107,7 @@ export const Globe = memo((props: IProps): ReactElement => {
             theme.dsl.hexToRgba(theme.dsl.palette.secondary.neon[500], 5)
           }
           onGlobeReady={() => {
-            console.log("Globe ready");
+            // console.log("Globe ready");
           }}
           // label
           labelsData={[originRing]}

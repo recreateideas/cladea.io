@@ -6,8 +6,8 @@ import { logo } from "src/app/ui-core/images";
 import { useMargin } from "src/common/hooks";
 import { selectors, User, useSelector } from "src/redux";
 import { routes } from "src/routes";
-import { Avatar } from "../Avatar";
-import { GoogleSSOButton } from "../GoogleSSOButton";
+// import { Avatar } from "../Avatar";
+// import { GoogleSSOButton } from "../GoogleSSOButton";
 import { Container } from "./styledComponents";
 
 interface IProps {}
@@ -16,7 +16,7 @@ export const MainHeader = (props: IProps): ReactElement => {
   const margin = useMargin();
   const { auth: authSelectors } = selectors;
   const user: User = useSelector(authSelectors.user);
-  console.log(user);
+  user && console.log(user);
   return (
     <Container className="main-header" margin={margin}>
       <Navbar className="navbar">
