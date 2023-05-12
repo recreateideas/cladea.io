@@ -33,6 +33,8 @@ export const Container = styled(ContainerBS)<{ margin: number }>`
           display: flex;
           width: 100%;
           gap: 32px;
+          padding: 8px;
+          justify-content: center;
           .styled-link-container {
             flex-direction: column;
             justify-content: center;

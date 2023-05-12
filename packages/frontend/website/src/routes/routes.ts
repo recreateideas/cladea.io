@@ -26,6 +26,7 @@ export const routes = [
     components: {
       mainView: Tech,
     },
+    hidden: true,
     context: "profile",
   },
   {

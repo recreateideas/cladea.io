@@ -16,6 +16,7 @@ export const MainHeader = (props: IProps): ReactElement => {
   const margin = useMargin();
   const { auth: authSelectors } = selectors;
   const user: User = useSelector(authSelectors.user);
+  console.log(user);
   return (
     <Container className="main-header" margin={margin}>
       <Navbar className="navbar">

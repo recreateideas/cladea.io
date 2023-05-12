@@ -16,6 +16,7 @@ export const Container = styled.div`
       overflow: hidden;
       .globe-container {
         width: 100%;
+        height: 100%;
         display: flex;
         justify-content: center;
         z-index: ${layout.namedZIndex.homeWorldMap};
