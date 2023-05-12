@@ -57,16 +57,7 @@ export const Moon = styled.div<{ size?: number }>`
 export const Planet = styled.div<{ size?: number }>`
   position: absolute;
   ${(props) => {
-    const {
-      size = 50,
-      theme: {
-        dsl: {
-          layout: {
-            namedZIndex: { starrySkyPlanet },
-          },
-        },
-      },
-    } = props;
+    const { size = 50 } = props;
     const topPercent = Math.max(5, Math.floor(Math.random() * 10));
     const leftPercent = Math.max(25, Math.floor(Math.random() * 100) + 1);
     const rndSize = size + Math.floor(Math.random() * 20);
@@ -74,7 +65,6 @@ export const Planet = styled.div<{ size?: number }>`
       img {
         width: ${rndSize}px;
       }
-      z-index: ${starrySkyPlanet};
       top: calc(${topPercent}% + 0px);
       left: calc(${leftPercent}% - ${size}px);
     `;

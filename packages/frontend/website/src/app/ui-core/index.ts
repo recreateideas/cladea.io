@@ -18,3 +18,4 @@ export * from "./Space";
 export * from "./StyledLink";
 export * from "./PageStructure";
 export * from "./IdCard";
+export * from "./Planets";

@@ -1,5 +1,5 @@
 import { Globe } from "src/app/features";
-import { Space } from "src/app/ui-core";
+import { Planets, Space } from "src/app/ui-core";
 import { Container } from "./styledComponents";
 
 export const Home = () => {
@@ -9,6 +9,7 @@ export const Home = () => {
       <div className="globe-container">
         <Globe />
       </div>
+      <Planets />
     </Container>
   );
 };
