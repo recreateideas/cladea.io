@@ -4,10 +4,12 @@ import { images, ThemeAndUserAgent } from "src/app/ui-core";
 import { useTheme } from "styled-components";
 import * as topojson from "topojson-client";
 import { land110m } from "src/data";
-import { Container } from "./styledComponents";
+import { Container, RingsContainer } from "./styledComponents";
 import { GeometryObject, Topology } from "topojson-specification";
 import { FeatureCollection, Geometry } from "geojson";
 import { selectors, useSelector } from "src/redux";
+// import { Rings } from "react-loader-spinner";
+// import _ from "lodash";
 
 // const places = [
 //   { name: "france", lat: 46.227638, lng: 2.213749, hits: 12, color: "white" },
@@ -42,7 +44,18 @@ export const Globe = memo((props: IProps): ReactElement => {
   const { isMobile } = theme.userAgent || {};
   const { common: commonSelectors } = selectors;
   const { current, global } = useSelector(commonSelectors.usageData);
-  console.log(global);
+  // console.log(global);
+  const labels: any[] = [];
+  global.points?.forEach((p: any) => {
+    const samePlacePointIdx = labels.findIndex(
+      (a: any) => a.city === p.city && a.country_name === p.country_name
+    );
+    if (samePlacePointIdx !== -1) {
+      labels[samePlacePointIdx].hits = labels[samePlacePointIdx].hits + p.hits;
+    } else {
+      labels.push(p);
+    }
+  }, []);
   const [containerSize, setContainerSize] = useState<ContainerSize>(
     {} as ContainerSize
   );
@@ -58,6 +71,7 @@ export const Globe = memo((props: IProps): ReactElement => {
     lat: current.latitude,
     lng: current.longitude,
   };
+  console.log({ current, global });
 
   useEffect(() => {
     const curr = globeEl.current as any;
@@ -89,6 +103,21 @@ export const Globe = memo((props: IProps): ReactElement => {
         }
       }}
     >
+      <RingsContainer>
+        <div className="rings-wrapper">
+          {/* <Rings
+            height="300"
+            width="300"
+            color={theme.dsl.palette.primary.purple[800]}
+            radius="30"
+            wrapperStyle={{}}
+            wrapperClass=""
+            visible={true}
+            ariaLabel="rings-loading"
+          /> */}
+          <div className="rings-label">Loading Visits...</div>
+        </div>
+      </RingsContainer>
       {!!current.city ? (
         <GlobeCore
           ref={globeEl}
@@ -110,20 +139,33 @@ export const Globe = memo((props: IProps): ReactElement => {
             // console.log("Globe ready");
           }}
           // label
-          labelsData={[originRing]}
-          labelLabel={() => "You"}
-          labelText={() => "You"}
-          labelAltitude={0.02}
-          labelSize={isMobile ? 3 : 2}
-          labelDotRadius={1}
-          labelColor={() => theme.dsl.palette.tertiary.pink[900]}
+          labelsData={[originRing, ...labels]}
+          labelText={(hitPoint: any) => {
+            return hitPoint.city
+              ? `${hitPoint.city || "c"}, ${hitPoint.country_name}: ${
+                  hitPoint.hits
+                }`
+              : "You";
+          }}
+          labelAltitude={(hitPoint: any) =>
+            hitPoint.city ? Math.random() : 0.02
+          }
+          labelSize={isMobile ? 2 : 2}
+          labelDotRadius={(hitPoint: any) => (hitPoint.city ? 0 : 1)} // "Only you has a dot"
+          labelColor={(hitPoint: any) =>
+            !hitPoint.city ||
+            (hitPoint.city === current.city &&
+              hitPoint.country_name === current.country_name)
+              ? theme.dsl.palette.secondary.yellow[500]
+              : theme.dsl.palette.tertiary.pink[900]
+          }
           // rings
           ringAltitude={0.02}
           ringsData={[originRing]}
           ringResolution={256}
           ringMaxRadius={10}
           ringPropagationSpeed={7}
-          ringColor={() => theme.dsl.palette.tertiary.pink[900]}
+          ringColor={() => theme.dsl.palette.secondary.yellow[500]}
           ringRepeatPeriod={700}
           // bars
           // hexBinPointsData={[...global.points, ...places]}

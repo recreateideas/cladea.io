@@ -10,7 +10,9 @@ export const handler = async function (event: APIGatewayProxyEvent) {
   } = event;
   const isMe = headers["x-sub"] === "4ea11476-c068-4d2a-a78a-bd5de304ccc1";
   const { sourceIp, userAgent } = identity;
-  const response = await axios.get(`https://ipapi.co/${sourceIp}/json/`);
+  const response = await axios.get(
+    `http://api.ipapi.com/${sourceIp}?access_key=b723852f05a07885c9eca65a2eb56e3e`
+  );
   const {
     postal,
     country,

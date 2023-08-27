@@ -36,10 +36,12 @@
   },
   "dependencies": {
     "@aws-sdk/client-cloudformation": "^3.67.0",
-    "aws-cdk": "^2.20.0",
+    "aws-cdk": "^2.93.0",
     "aws-sdk": "^2.1115.0",
     "dotenv": "^16.0.0",
     "fs-extra": "^10.0.1",
+    "lodash": "^4.17.21",
+    "react-loader-spinner": "^5.4.5",
     "ts-node": "^10.7.0"
   },
   "devDependencies": {

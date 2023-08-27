@@ -85,13 +85,15 @@ export const roles = [
     start: "Sep 2022",
     end: "Present",
     position: "Staff Engineer",
-    companyName: "Beem | Eftpos | AP+",
+    companyName: "AP+ | Beem | Eftpos",
     details: {
       keyPoints: [
         "Proactively mentor engineers.",
+        "Business requirement analysis",
         "Identify staff who need support and/or encouragement and provide guidance outside of the regular chapter management structure.",
         "Be across multiple projects to ensure all engineers are working efficiently and following company's engineering processes and practices.",
         "Work with chapter leads to plan and execute improvements and changes.",
+        "Work with Business stakeholders to gather requirements, architect solutions and implement delivery",
         "Represent company's best practices.",
       ],
       stack: [
@@ -111,14 +113,14 @@ export const roles = [
   {
     start: "Nov 2021",
     end: "Sep 2022",
-    position: "Senior Full Stack Engineer | Tech Lead",
-    companyName: "Beem | Eftpos | AP+",
+    position: "Tech Lead | Senior Full Stack Engineer",
+    companyName: "AP+ | Beem | Eftpos",
     details: {
       keyPoints: [
         "Implement efficient payment flows involving AWS StepFunctions state machines",
         "Integrate and liaise with cutting edge 3rd party providers to provide secure QR payments",
-        "Design and implement OAuth0, Oauth2, OIDC solutions",
-        "Provide mentoring and support to junior developers",
+        "Design and implement identity management solution with Oauth2, OIDC applications",
+        "Provide mentoring and support to developers of all levels",
         "Architect and implement solutions using AWS SAM framework and a wide array of AWS services",
         "App Prototyping utilising React | Redux, AWS Web Sockets, queues, Lambdas, DynamoDb single table architecture",
         "Ensure best practices are followed and implemented at every step of the development lifecycle",
